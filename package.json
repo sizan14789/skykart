@@ -1,0 +1,22 @@
+{
+  "name": "skykart",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/sizan14789/skykart#readme",
+  "bugs": {
+    "url": "https://github.com/sizan14789/skykart/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sizan14789/skykart.git"
+  },
+  "license": "ISC",
+  "author": "sizan",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev"
+  }
+}
