@@ -35,7 +35,7 @@ export default function Navbar({ theme }: { theme: string }) {
       
       <NavbarSearchDesktop />
 
-      <Link href="#" className="active:scale-90">
+      <Link href="/cart" className="active:scale-90">
         <ShoppingCartSimpleIcon size={20} weight="light" />
       </Link>
 
@@ -68,13 +68,13 @@ export default function Navbar({ theme }: { theme: string }) {
 
           <NavbarSearchMobile />
           <Link
-            href="#"
+            href="/shop"
             className="border-b border-b-(--border) w-full min-h-20 flex justify-center items-center duration-200 hover:brightness-90 hover:text-(--primary) active:scale-90 bg-(--bg) hover:font-medium "
           >
             Shop
           </Link>
           <Link
-            href="#"
+            href="/orders"
             className="border-b border-b-(--border) w-full min-h-20 flex justify-center items-center duration-200 hover:brightness-90 hover:text-(--primary) active:scale-90 bg-(--bg) hover:font-medium "
           >
             My Orders
@@ -90,8 +90,8 @@ export default function Navbar({ theme }: { theme: string }) {
 
       {/* desktop */}
       <nav className="hidden lg:flex items-center gap-8 justify-center">
-        <Link href="#">Shop</Link>
-        <Link href="#">My Orders</Link>
+        <Link className="hover:text-(--primary) duration-200 " href="/shop">Shop</Link>
+        <Link className="hover:text-(--primary) duration-200 " href="/orders">My Orders</Link>
       </nav>
 
       {/* Authentication  */}
