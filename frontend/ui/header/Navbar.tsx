@@ -2,9 +2,17 @@
 
 import Link from "next/link";
 import useNavStore from "@/context/Nav";
-import { MoonIcon, SunDimIcon, XIcon } from "@phosphor-icons/react";
+import {
+  MoonIcon,
+  ShoppingCartSimpleIcon,
+  SunDimIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import { useState } from "react";
 import { setCookie } from "cookies-next";
+import NavbarSearchMobile from "./NavbarSearchMobile";
+import NavbarAuth from "./NavbarAuth";
+import NavbarSearchDesktop from "./NavbarSearchDesktop";
 
 export default function Navbar({ theme }: { theme: string }) {
   const { navOpen, setNavOpen } = useNavStore();
@@ -14,24 +22,33 @@ export default function Navbar({ theme }: { theme: string }) {
     if (localTheme !== "dark") {
       setTheme("dark");
       document.body.classList.add("dark");
-      setCookie('theme', "dark");
+      setCookie("theme", "dark");
     } else {
       setTheme("light");
       document.body.classList.remove("dark");
-      setCookie('theme', "light");
+      setCookie("theme", "light");
     }
   };
 
   return (
-    <div className="flex gap-8 items-center">
-      <button className="cursor-pointer" onClick={toggleTheme}>
+    <div className="flex gap-4 md:gap-8 grow items-center justify-end">
+      
+      <NavbarSearchDesktop />
+
+      <Link href="#" className="active:scale-90">
+        <ShoppingCartSimpleIcon size={20} weight="light" />
+      </Link>
+
+      <button
+        className="cursor-pointer duration-200 active:scale-90"
+        onClick={toggleTheme}
+      >
         {localTheme !== "dark" ? (
           <MoonIcon size={20} weight="light" />
         ) : (
-          <SunDimIcon size={23} weight="light" />
+          <SunDimIcon size={20} weight="light" />
         )}
       </button>
-      <Link href="#">Search</Link>
 
       {/* mobile */}
       <nav
@@ -44,25 +61,21 @@ export default function Navbar({ theme }: { theme: string }) {
             onClick={() => setNavOpen(false)}
             className="w-full min-h-20 flex justify-center items-center"
           >
-            <p className="h-16 w-16 rounded-full bg-(--) flex justify-center items-center cursor-pointer hover:text-(--bg) hover:bg-(--primary) duration-200 ">
+            <p className="h-16 w-16 rounded-full bg-(--) flex justify-center items-center cursor-pointer hover:text-white hover:bg-(--primary) duration-200 active:scale-90">
               <XIcon size={36} weight="light" />
             </p>
           </button>
+
+          <NavbarSearchMobile />
           <Link
             href="#"
-            className="border-y border-y-(--border) w-full min-h-20 flex justify-center items-center"
+            className="border-b border-b-(--border) w-full min-h-20 flex justify-center items-center duration-200 hover:brightness-90 hover:text-(--primary) active:scale-90 bg-(--bg) hover:font-medium "
           >
             Shop
           </Link>
           <Link
             href="#"
-            className="border-b border-b-(--border) w-full min-h-20 flex justify-center items-center"
-          >
-            Cart
-          </Link>
-          <Link
-            href="#"
-            className="border-b border-b-(--border) w-full min-h-20 flex justify-center items-center"
+            className="border-b border-b-(--border) w-full min-h-20 flex justify-center items-center duration-200 hover:brightness-90 hover:text-(--primary) active:scale-90 bg-(--bg) hover:font-medium "
           >
             My Orders
           </Link>
@@ -78,15 +91,11 @@ export default function Navbar({ theme }: { theme: string }) {
       {/* desktop */}
       <nav className="hidden lg:flex items-center gap-8 justify-center">
         <Link href="#">Shop</Link>
-        <Link href="#">Cart</Link>
         <Link href="#">My Orders</Link>
       </nav>
 
       {/* Authentication  */}
-      <div className="flex gap-6">
-        <Link href="#">Sign in</Link>
-        <Link href="#">Sign up</Link>
-      </div>
+      <NavbarAuth />
     </div>
   );
 }

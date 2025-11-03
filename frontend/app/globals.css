@@ -6,24 +6,27 @@
   --bg: #ffffff;
   --text: #000000;
   --subtext: #0000007e;
-  --primary: #16476A;
-  --secondary: #132440;
-  --highlight: #BF092F;
+  --primary: #F44336;
+  --secondary: #E91E63;
+  --highlight: #3F51B5;
   --border: #cfcece80;
+  --border-button: #81818180;
 }
 
 /* Dark Theme */ 
 .dark {
-  --bg: #12171a;
-  --text: #ffffff;
+  --bg: #0a0a0a;
+  --text: #c9c9c9;
   --subtext: #ffffff80;
-  --primary: #0F4C75;
-  --secondary: #3282B8;
-  --highlight: #BBE1FA;
+  --primary: #673AB7;
+  --secondary: #9C27B0;
+  --highlight: #3F51B5;
+  --border: #42424280;
+  --border-button: #a3a1a180;
 }
 
 /* fonts */
-.font-mon {
+.font-heading {
   font-family: "Robot Slab", sans-serif;
 }
 
@@ -33,6 +36,13 @@
 }
 
 .core{
-  @apply max-w-400 mx-auto px-4;
+  @apply max-w-340 mx-auto px-4;
 }
 
+.button-primary {
+  @apply text-sm rounded-md flex bg-(--primary) duration-200 text-white font-medium overflow-hidden hover:brightness-85  active:scale-90 cursor-pointer;
+}
+
+.button-secondary {
+  @apply text-sm rounded-md flex font-medium overflow-hidden duration-200 border border-(--border-button) hover:bg-(--primary) hover:text-white hover:border-(--primary) active:scale-90 cursor-pointer;
+}
