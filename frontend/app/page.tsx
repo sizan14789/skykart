@@ -1,7 +1,11 @@
 export default function Home() {
   return (
-    <div className="flex grow items-center justify-center ">
-      <h2 className="text-4xl">Hello</h2>
+    <div className="shell grow">
+      <div className="core flex flex-col items-center">
+        <div className="w-full my-10">slider</div>
+        <div className="w-full my-10">Shop</div>
+        <div className="w-full my-10">Categories</div>
+      </div>
     </div>
   );
 }

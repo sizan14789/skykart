@@ -1,16 +1,24 @@
 import cookieParser from "cookie-parser";
 import express from "express";
+import cors from 'cors'
 import { globalErrorHandler, notFound } from "./middlewares/Error.js";
 import loginRouter from './routes/auth.js'
+import productsRouter from './routes/products.js'
 
 const app = express();
 
 // middlewares
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}))
+
 app.use(express.json());
 app.use(cookieParser())
 
 // routes
 app.use(loginRouter);
+app.use(productsRouter)
 
 // Not found
 app.use(notFound)

@@ -4,7 +4,7 @@ import NavButton from "./NavButton";
 
 export default function Header({ theme }: { theme: string }) {
   return (
-    <div className="shell sticky top-0 border-b border-b-(--border)">
+    <div className="shell sticky bg-(--bg) top-0 border-b border-b-(--border)">
       <div className="flex items-center min-h-14 md:min-h-18 xl:min-h-22 core pl-1! md:pl-4!">
         <div className="flex md:gap-2 items-center lg:mr-8">
           <NavButton />

@@ -32,7 +32,7 @@
 
 /* pre styled components  */
 .shell{
-  @apply w-svw;
+  @apply w-svw ;
 }
 
 .core{
