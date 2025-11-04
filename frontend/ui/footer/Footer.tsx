@@ -56,7 +56,7 @@ export default function Footer() {
         </div>
 
         <div className="w-full text-center mb-2 text-(--subtext) text-sm">
-          All rights Reserved. &#169; <span className="text-(--secondary)"> Sizan Molla </span> 2025
+          All rights Reserved. &#169; <span className="text-(--highlight)"> Sizan Molla </span> 2025
         </div>
       </div>
     </div>

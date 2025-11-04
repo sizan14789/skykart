@@ -11,5 +11,7 @@ export const globalErrorHandler = (err, _req, res, next)=>{
     details: err.details
   }
 
+  console.log(errorResponse)
+
   return res.status(err.status || 500).json(errorResponse);
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
 @import "tailwindcss";
 
 /* Light Theme */
@@ -6,21 +6,21 @@
   --bg: #ffffff;
   --text: #000000e3;
   --subtext: #0000007e;
-  --primary: #F44336;
-  --secondary: #E91E63;
-  --highlight: #3F51B5;
+  --primary: #f44336;
+  --secondary: #e91e63;
+  --highlight: #3f51b5;
   --border: #cfcece80;
   --border-button: #81818180;
 }
 
-/* Dark Theme */ 
+/* Dark Theme */
 .dark {
   --bg: #0a0a0a;
   --text: #ffffffdc;
   --subtext: #ffffff80;
-  --primary: #673AB7;
-  --secondary: #9C27B0;
-  --highlight: #3F51B5;
+  --primary: #673ab7;
+  --secondary: #9c27b0;
+  --highlight: #3f51b5;
   --border: #42424280;
   --border-button: #a3a1a180;
 }
@@ -31,11 +31,11 @@
 }
 
 /* pre styled components  */
-.shell{
-  @apply w-svw ;
+.shell {
+  @apply w-svw;
 }
 
-.core{
+.core {
   @apply max-w-340 mx-auto px-4;
 }
 
@@ -49,4 +49,8 @@
 
 .dimmed-text {
   @apply text-sm text-(--subtext);
+}
+
+.input {
+  @apply border border-(--border) bg-(--bg) text-sm p-3 rounded-md outline-none duration-200 focus:border-(--primary);
 }

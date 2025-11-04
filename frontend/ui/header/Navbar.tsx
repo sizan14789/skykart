@@ -13,8 +13,9 @@ import { setCookie } from "cookies-next";
 import NavbarSearchMobile from "./NavbarSearchMobile";
 import NavbarAuth from "./NavbarAuth";
 import NavbarSearchDesktop from "./NavbarSearchDesktop";
+import { userType } from "@/types/UserType";
 
-export default function Navbar({ theme }: { theme: string }) {
+export default function Navbar({ theme, user }: { theme: string, user: userType }) {
   const { navOpen, setNavOpen } = useNavStore();
   const [localTheme, setTheme] = useState<string>(theme);
 
@@ -97,7 +98,7 @@ export default function Navbar({ theme }: { theme: string }) {
       </nav>
 
       {/* Authentication  */}
-      <NavbarAuth />
+      <NavbarAuth user={user} />
     </div>
   );
 }

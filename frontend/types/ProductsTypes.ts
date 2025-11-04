@@ -1,4 +1,4 @@
-interface ProductCardType {
+export interface ProductCardType {
   id: number,
   product_name: string,
   product_image: string,
@@ -6,7 +6,7 @@ interface ProductCardType {
   offer_price: number
 }
 
-interface soloProductType extends ProductCardType {
+export interface soloProductType extends ProductCardType {
   description: string,
   category: string,
   brand: string,

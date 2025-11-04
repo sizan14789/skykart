@@ -6,10 +6,10 @@ import validate from '../middlewares/validation.js'
 const router = Router()
 
 // sign up
-router.get('/api/auth/signup', validate(signupSchema), signup);
+router.post('/api/auth/signup', validate(signupSchema), signup);
 
 // login
-router.get('/api/auth/login', validate(loginSchema), login);
+router.post('/api/auth/login', validate(loginSchema), login);
 
 // session
 router.get('/api/auth/session', session);
