@@ -30,13 +30,17 @@
   font-family: "Robot Slab", sans-serif;
 }
 
+h2{
+  font-family: "Robot Slab", sans-serif;
+}
+
 /* pre styled components  */
 .shell {
   @apply w-svw;
 }
 
 .core {
-  @apply max-w-340 mx-auto px-4;
+  @apply max-w-340 mx-auto px-8;
 }
 
 .button-primary {

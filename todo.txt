@@ -1,0 +1,4 @@
+update cart Details if it exists from single product page so that adding and going back with mouse results in updated info
+
+make checkout display dynamic so that items can be editted right there
+

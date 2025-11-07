@@ -5,6 +5,7 @@ import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 import { useGlobalSearchStore } from "@/context/GlobalSearch";
 import { ProductCardType } from "@/types/ProductsTypes";
+import Loading from "../loading";
 
 export default function ProductsSection({
   searchString,
@@ -12,7 +13,7 @@ export default function ProductsSection({
   searchString: string | string[] | undefined;
 }) {
   const { products, setProducts } = useShopProductsStore();
-  const [state, setState] = useState<string>("loading");
+  const [ state, setState] = useState<string>("loading");
   const { search, setSearch } = useGlobalSearchStore();
 
   useEffect(() => {
@@ -59,7 +60,7 @@ export default function ProductsSection({
 
   if (state === "loading")
     return (
-      <div className="grow flex justify-center items-center">Loading...</div>
+      <div className="grow flex justify-center items-center"><Loading /></div>
     );
 
   if (state === "error")
@@ -69,7 +70,7 @@ export default function ProductsSection({
     <div className="w-full ">
       <h2 className="text-2xl my-1 mt-6">Shop</h2>
       {searchString ? (
-        <p className="mt-2">You searched for {searchString} </p>
+        <p className="mt-2 text-sm text-(--subtext)  ">You searched for "{searchString}"" </p>
       ) : (
         <></>
       )}

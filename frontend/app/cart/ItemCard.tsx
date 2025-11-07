@@ -2,8 +2,7 @@ import useCartStore from "@/context/CartStore";
 import { updateCart } from "@/lib/cartLib";
 import { TrashIcon } from "@phosphor-icons/react";
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Link from "next/link"; 
 import toast from "react-hot-toast";
 
 type ParamsType = {
@@ -86,7 +85,7 @@ const ItemCard = ({
   };
 
   return (
-    <div className="grid rounded-b-lg grid-cols-3 lg:grid-cols-5 py-4 border-b-(--border) border-b bg-(--bg) hover:brightness-95 duration-200">
+    <div className="grid grid-cols-3 lg:grid-cols-5 py-4 border-b-(--border) border-b bg-(--bg) hover:brightness-95 duration-200 ">
       <Link
         href={"/shop/" + id}
         className=" flex lg:col-span-2 items-center lg:items-start gap-4 flex-col lg:flex-row px-2  cursor-pointer"

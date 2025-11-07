@@ -5,9 +5,13 @@ export const getTheme = async () => {
   return cookieStore.get("theme")?.value || "light";
 };
 
-export const getUser = async () => {
+export const getSessionid = async ()=>{
   const cookieStore = await cookies();
-  const sessionid = cookieStore.get("sessionid")?.value;
+  return cookieStore.get("sessionid")?.value;
+}
+
+export const getUser = async () => {
+  const sessionid = await getSessionid();
   try {
     const res = await fetch(`${process.env.BACKEND_URL}/api/auth/session`, {
       method: "get",

@@ -20,6 +20,7 @@ export const getProduct = async (req, res, next) => {
 export const getAllProducts = async (req, res) => {
   const queries = req.query;
   const search = queries?.search;
+  const limit = queries?.limit;
 
   if (search) {
     const data = (

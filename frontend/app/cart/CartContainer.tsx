@@ -9,8 +9,8 @@ export default function CartContainer({
 }: {
   cartItemDetailsInfo: CartItemType[];
 }) {
-  const [cartDetails, setCartDetails] = useState<CartItemType[]>(cartItemDetailsInfo);
-  const [ placeOrderModal, setPlaceOrderModal ] = useState<boolean>(false)
+  const [cartDetails, setCartDetails] =
+    useState<CartItemType[]>(cartItemDetailsInfo);
 
   // useEffect(() => {
   //   if (userState !== "loggedIn") return;
@@ -110,18 +110,12 @@ export default function CartContainer({
         </p>
       </div>
 
-      <button className="button-primary self-center h-12 w-40 flex justify-center items-center mt-2"
-      onClick={()=> setPlaceOrderModal(true)}
+      <Link
+        href="/checkout"
+        className="button-primary self-center h-12 w-40 flex justify-center items-center mt-2"
       >
         Place Order
-      </button>
-      
-      {/* modal for order placing */}
-      <div className={`${placeOrderModal? "flex" : 'hidden' } h-full w-svw fixed top-0 left-0 justify-center items-center bg-gray-300/90 z-100 `} >
-        <div className="">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, a perspiciatis consequuntur non quis sapiente blanditiis eos aliquam totam earum expedita, itaque, deleniti voluptatibus ad. Deleniti animi nisi quae dolor?
-        </div>
-      </div>
+      </Link>
     </>
   );
 }

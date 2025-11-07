@@ -4,8 +4,7 @@ import useCartStore from "@/context/CartStore";
 import { handleAddToCart, handleBuyNow } from "@/lib/cartLib";
 import { ProductCardType } from "@/types/ProductsTypes";
 import { ShoppingCartIcon } from "@phosphor-icons/react";
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"; 
 import { useRouter } from "next/navigation";
 
 export default function ProductCard({data}: {data:ProductCardType }) {
