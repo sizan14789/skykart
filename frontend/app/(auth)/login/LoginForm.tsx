@@ -40,7 +40,7 @@ export default function LoginForm() {
         toast.success("Logged in");
         setUser(data);
         router.refresh();
-        setTimeout(()=> router.push('/'), 100)
+        setTimeout(() => router.push("/"), 100);
       } else {
         toast.error(data.message);
       }
@@ -52,32 +52,44 @@ export default function LoginForm() {
 
   return (
     <form
-      className="flex flex-col gap-6 h-full justify-center mx-auto"
+      className="flex flex-col h-full justify-center mx-auto"
       onSubmit={handleLogin}
     >
-      <h2 className="text-2xl md:text-4xl  ">Login</h2>
+      <h2 className="text-2xl md:text-4xl mb-6">Login</h2>
 
+      <label
+        htmlFor="username"
+        className="text-(--subtext) text-xs font-bold mb-2"
+      >
+        Username or Email
+      </label>
       <input
         type="text"
         name="username"
         placeholder="username"
         required
-        className="input h-16! w-92 md:w-120"
+        className="input h-16! w-92 md:w-120 mb-6"
       />
 
+      <label
+        htmlFor="username"
+        className="text-(--subtext) text-xs font-bold mb-2"
+      >
+        Password
+      </label>
       <input
         type="password"
         name="password"
         placeholder="password"
         required
-        className="input h-16! w-92 md:w-120"
+        className="input h-16! w-92 md:w-120 mb-6"
       />
 
-      <button className="button-primary w-40 h-12 flex justify-center items-center ">
+      <button className="button-primary w-40 h-12 flex justify-center items-center mb-2">
         Log in
       </button>
 
-      <p className="text-sm text-(--subtext) ">
+      <p className="text-xs text-(--subtext) ">
         New to SkyKart?{" "}
         <Link href="/signup" className="text-(--highlight) ">
           {" "}

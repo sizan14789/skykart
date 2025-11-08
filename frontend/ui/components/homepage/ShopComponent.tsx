@@ -33,7 +33,7 @@ export default async function ShopComponent() {
           return <ProductCard data={each} key={each.id} />;
         })}
       </div>
-      <Link href="/shop" className="button-primary h-12 w-32 flex justify-center items-center self-center">
+      <Link href="/shop" className="button-primary h-12 w-32 flex justify-center items-center self-center mt-2 rounded-full!">
         See More
       </Link>
     </div>

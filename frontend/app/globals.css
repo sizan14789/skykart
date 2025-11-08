@@ -11,6 +11,7 @@
   --highlight: #0c2ce2;
   --border: #cfcece80;
   --border-button: #81818180;
+  --slider: #e9e9e9;
 }
 
 /* Dark Theme */
@@ -23,6 +24,7 @@
   --highlight: #0c2ce2;
   --border: #42424280;
   --border-button: #a3a1a180;
+  --slider: #1a1a1a;
 }
 
 /* fonts */
@@ -48,7 +50,7 @@ h2{
 }
 
 .button-secondary {
-  @apply text-sm rounded-md flex font-medium overflow-hidden duration-200 border border-(--border-button) hover:bg-(--primary) hover:text-white hover:border-(--primary) active:scale-90 cursor-pointer;
+  @apply text-sm rounded-md flex font-medium overflow-hidden duration-200 border border-(--border-button) bg-(--bg) hover:bg-(--primary) hover:text-white hover:border-(--primary) active:scale-90 cursor-pointer;
 }
 
 .button-rounded{

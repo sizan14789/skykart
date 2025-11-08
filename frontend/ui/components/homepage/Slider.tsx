@@ -14,17 +14,17 @@ const sliderInfo = [
     offer: "Limited Time Offer 30% Off",
     headline: "Experience Pure Sound - Your Perfect Headphones Awaits!",
     primaryButton: "Visit",
-    image: "",
-    link: "/shop/1" ,
+    image: "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    link: "/shop/1",
     secondaryButton: "Learn more",
   },
   {
     id: 2,
     offer: "Hurry up only few lefts!",
-    headline: "Next-Level Gaming Starts Here - Discover PlayStation 5 Today!",
+    headline: "Next-Level Gaming Starts Here - !",
     primaryButton: "Browse",
-    image: "",
-    link: "/shop?search=" ,
+    image: "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    link: "/shop?search=",
     secondaryButton: "Explore Deals",
   },
   {
@@ -32,8 +32,8 @@ const sliderInfo = [
     offer: "Exclusive Deal 40% off",
     headline: "Power Meets Elegance - Apple MacBook Pro is Here for you!",
     primaryButton: "Cart",
-    image: "",
-    link: "/cart" ,
+    image: "https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg",
+    link: "/cart",
     secondaryButton: "Checkout",
   },
 ];
@@ -41,7 +41,7 @@ const sliderInfo = [
 export default function Slider() {
   return (
     <div className="w-full my-10">
-      <div className="overflow-hidden rounded-4xl">
+      <div className="overflow-hidden rounded-xl">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={0}
@@ -66,10 +66,10 @@ export default function Slider() {
             }) => {
               return (
                 <SwiperSlide key={id}>
-                  <div className="bg-[#f3f3f3] py-8 px-8 sm:px-20 flex flex-col-reverse gap-8 lg:gap-14 md:flex-row items-center h-128 lg:h-96">
-                    <div className="">
-                      <p className="text-orange-600">{offer}</p>
-                      <h2 className="text-2xl text-gray-700 md:text-[2rem] lg:text-[2.5rem] leading-12 font-bold mb-6 ">
+                  <div className="bg-(--slider) py-8 px-8 sm:px-20 flex flex-col-reverse gap-8 lg:gap-14 md:flex-row items-center h-128 lg:h-96">
+                    <div className=" flex-1 ">
+                      <p className="text-(--primary)">{offer}</p>
+                      <h2 className="text-2xl md:text-[2rem] lg:text-[2.5rem] leading-12 font-bold mb-6 ">
                         {headline}
                       </h2>
                       <div className="flex gap-4 items-center ">
@@ -85,13 +85,13 @@ export default function Slider() {
                         </Link>
                       </div>
                     </div>
-                    <figure className="">
+                    <figure className=" p-4 md:p-0 overflow-hidden h-60">
                       <Image
                         src={image}
                         width={400}
                         height={400}
                         alt="slide-1"
-                        className="w-40 sm:w-52 md:max-w-72"
+                        className="rounded-2xl object-cover"
                       />
                     </figure>
                   </div>

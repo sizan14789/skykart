@@ -5,6 +5,7 @@ import { globalErrorHandler, notFound } from "./middlewares/Error.js";
 import loginRouter from './routes/auth.js'
 import productsRouter from './routes/products.js'
 import cartsRouter from './routes/carts.js'
+import ordersRouter from './routes/orders.js'
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(cookieParser())
 app.use(loginRouter);
 app.use(productsRouter)
 app.use(cartsRouter)
+app.use(ordersRouter)
 
 // Not found
 app.use(notFound)

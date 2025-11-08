@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="shell  ">
+    <div className="shell mt-auto">
       <div className="core flex flex-col">
         <div className="flex wrap justify-around py-16">
           <div className="flex items-center">

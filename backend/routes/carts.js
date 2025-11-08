@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { validateBuyer } from "../middlewares/validateUser.js"; 
-import { getCartOnly, getCartWithProductDetails } from "../controllers/cart.js";
+import { getCartOnly, getCartWithProductDetails, updateCart } from "../controllers/cart.js";
 
 const router = Router();
 
@@ -11,6 +11,6 @@ router.get("/api/cart", validateBuyer, getCartOnly);
 router.get("/api/cartDetails", validateBuyer, getCartWithProductDetails);
 
 // update cart
-router.post("/api/cart", validateBuyer);
+router.post("/api/cart", validateBuyer, updateCart);
 
 export default router;

@@ -1,3 +1,5 @@
+import pool from "../utils/connectPool.js";
+
 // get cart only
 export const getCartOnly = async (req, res) => {
   const { buyerid } = req;
@@ -37,13 +39,28 @@ export const updateCart = async (req, res) => {
   const { buyerid } = req;
   const newCart = req.body;
 
-  // todo cart update
-  const updateCart = (
+  const cartExists = await pool.query(
+    `select userid from cart where userid=$1`,
+    [buyerid]
+  );
+
+  if (cartExists.rows.length === 0) {
+    const createdCart = (
+      await pool.query(
+        `insert into cart (items, userid) values ($1::jsonb, $2) returning items`,
+        [newCart, buyerid]
+      )
+    ).rows[0];
+
+    return res.status(201).json(createdCart);
+  }
+
+  const updatedCart = (
     await pool.query(
       `update cart set items=$1 where userid=$2 returning items`,
       [newCart, buyerid]
     )
-  ).rows;
+  ).rows[0];
 
-  res.status(201).json(updateCart);
+  return res.status(201).json(updatedCart);
 };

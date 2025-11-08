@@ -1,11 +1,14 @@
 "use client";
 
+import useCartStore from "@/context/CartStore";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function CheckoutForm() {
   const router = useRouter();
+  const { setCart } = useCartStore()
 
-  const handleCheckoutFormSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+  const handleCheckoutFormSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formdata = new FormData(e.currentTarget);
     
@@ -29,8 +32,27 @@ export default function CheckoutForm() {
       message
     }
 
-    // todo send body to server and handle rest there
-
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/order`, {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include"
+      })
+      console.log(res)
+      if(res.status===201){
+        toast.success("Order placed")
+        setCart({})
+        
+      } else {
+        const data = await res.json();
+        toast.error(data.message)
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   
   return (

@@ -54,40 +54,58 @@ export default function SignupForm() {
 
   return (
     <form
-      className="flex flex-col gap-6 h-full justify-center mx-auto"
+      className="flex flex-col h-full justify-center mx-auto"
       onSubmit={handleSignup}
     >
-      <h2 className="text-2xl md:text-4xl ">Sign up</h2>
-
+      <h2 className="text-2xl md:text-4xl mb-4 ">Sign up</h2>
+      
+      <label
+        htmlFor="username"
+        className="text-(--subtext) text-xs font-bold mb-2"
+      >
+        Username
+      </label>
       <input
         type="text"
         name="username"
         placeholder="Username"
         required
-        className="input h-16! w-92 md:w-120"
+        className="input h-16! w-92 md:w-120 mb-6 "
       />
-
+      
+      <label
+        htmlFor="username"
+        className="text-(--subtext) text-xs font-bold mb-2"
+      >
+        Email
+      </label>
       <input
         type="email"
         name="email"
         placeholder="Email"
         required
-        className="input h-16! w-92 md:w-120"
+        className="input h-16! w-92 md:w-120 mb-6 "
       />
 
+      <label
+        htmlFor="username"
+        className="text-(--subtext) text-xs font-bold mb-2"
+      >
+        Password
+      </label>
       <input
         type="password"
         name="password"
         placeholder="Password"
         required
-        className="input h-16! w-92 md:w-120"
+        className="input h-16! w-92 md:w-120 mb-6 "
       />
 
       <button className="button-primary w-40 h-12 flex justify-center items-center ">
-        Log in
+        Sign up
       </button>
 
-      <p className="text-sm text-(--subtext) ">
+      <p className="text-xs text-(--subtext) mt-2 ">
         SkyKart user?{" "}
         <Link href="/login" className="text-(--highlight) ">
           Log in{" "}

@@ -23,9 +23,10 @@ export const signup = async (req, res, next) => {
     );
 
   const hashedPass = await bcrypt.hash(password, 12);
+
   const createdUser = (
     await pool.query(
-      'insert into "user" (username, email, password) values ($1, $2, $3) returning username, email, role',
+      'insert into "user" (username, email, password) values ($1, $2, $3) returning id, username, email, role',
       [username, email, hashedPass]
     )
   ).rows[0];
@@ -34,7 +35,7 @@ export const signup = async (req, res, next) => {
 
   await pool.query(
     'insert into "session" (sessionid, userid) values ($1, $2) ',
-    [sessionid, createdUser[0]?.id]
+    [sessionid, createdUser?.id]
   );
 
   // cookie
@@ -44,7 +45,14 @@ export const signup = async (req, res, next) => {
     maxAge: 1000 * 3600 * 24 * 7,
   });
 
-  return res.status(201).json(createdUser);
+  const responseUser = {
+    username: createdUser.username,
+    email: createdUser.email,
+    role: createdUser.role,
+  };
+  console.log(responseUser )
+
+  return res.status(201).json(responseUser);
 };
 
 // login
