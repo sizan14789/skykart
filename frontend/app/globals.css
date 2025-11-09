@@ -27,6 +27,10 @@
   --slider: #1a1a1a;
 }
 
+html{
+  font-size: 90%;
+}
+
 /* fonts */
 .font-heading {
   font-family: "Robot Slab", sans-serif;

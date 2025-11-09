@@ -1,43 +1,40 @@
 import ApiError from "../utils/ApiError.js";
 import pool from "../utils/connectPool.js";
 
-// get orders only
-export const getCartOnly = async (req, res) => {
+// get orders
+export const getOrders = async (req, res) => {
   const { buyerid } = req;
 
-  const cartProducts = (
-    await pool.query(`SELECT items from cart where userid = $1;`, [buyerid])
-  )?.rows[0]?.items;
-
-  const keysArray = Object.keys(cartProducts);
-  let formattedCart = {};
-  keysArray.forEach((each) => {
-    formattedCart[each] = Number(cartProducts[each]);
-  });
-
-  res.status(200).send(formattedCart);
-};
-
-// get orders with product details
-export const getCartWithProductDetails = async (req, res) => {
-  const { buyerid } = req;
-
-  const cartProducts = (
+  const orders = (
     await pool.query(
-      `SELECT p.id, p.name AS product_name, p.image AS product_image, p.offer_price, ci.quantity::int AS quantity, "user".username as seller_name
-    FROM cart c JOIN jsonb_each_text(c.items) AS ci(product_id, quantity) ON true 
-    JOIN product p ON p.id::text = ci.product_id join "user" on p.sellerid="user".id
-    WHERE c.userid = $1;`,
+      `select o.id, p.id as product_id, o.created_at, p.image as product_image, p.name as product_name, quantity, p.offer_price, quantity*offer_price as subtotal, order_status from "order" as o join product as p on o.product_id = p.id where buyer_id=$1;`,
       [buyerid]
     )
-  ).rows;
+  )?.rows;
 
-  res.status(200).send(cartProducts);
+  res.status(200).send(orders);
 };
 
-// update order
+// get order by id
+export const getOrderById = async (req, res) => {
+  const { buyerid } = req;
+  const id = req.params.id;
+
+  // todo complete
+  const order = (
+    await pool.query(
+      `select o.id, p.id as product_id, o.full_name, o.phone, o.address, o.message, o.created_at, p.image as product_image, p.name as product_name, p.description, quantity, p.offer_price, quantity*offer_price as subtotal, order_status from "order" as o join product as p on o.product_id = p.id where o.id=$1 and buyer_id=$2`,
+      [id, buyerid]
+    )
+  )?.rows[0];
+  
+  res.status(200).send(order);
+};
+
+// update order incomplete
 export const updateOrder = async (req, res, next) => {
   const { buyerid } = req;
+
   const body = req.body;
   const {
     full_name,
@@ -74,12 +71,8 @@ export const updateOrder = async (req, res, next) => {
 
   for (const key of keysArray) {
     try {
-      const sellerid = (
-        await pool.query(`select sellerid from product where id=$1`, [key])
-      ).rows[0]?.sellerid;
-
       await pool.query(
-        'insert into "order" (product_id, quantity, buyer_id, full_name, division, address, phone, message, seller_id) values ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+        'insert into "order" (product_id, quantity, buyer_id, full_name, division, address, phone, message) values ($1, $2, $3, $4, $5, $6, $7, $8)',
         [
           Number(key),
           Number(buyerCart[key]),
@@ -89,7 +82,6 @@ export const updateOrder = async (req, res, next) => {
           buyerInfo.address,
           buyerInfo.phone,
           buyerInfo.message ? buyerInfo.message : "",
-          Number(sellerid),
         ]
       );
     } catch (error) {

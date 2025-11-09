@@ -2,7 +2,6 @@ import ProductCard from "@/app/shop/ProductCard";
 import { ProductCardType } from "@/types/ProductsTypes";
 import Link from "next/link";
 
-// todo add limit
 const getProducts = async () => {
   try {
     const res = await fetch(`${process.env.BACKEND_URL}/api/products?limit=5`);

@@ -45,10 +45,9 @@ export default function CheckoutForm() {
       if(res.status===201){
         toast.success("Order placed")
         setCart({})
-        
       } else {
         const data = await res.json();
-        toast.error(data.message)
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);

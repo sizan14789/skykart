@@ -23,9 +23,9 @@ export const getCartWithProductDetails = async (req, res) => {
 
   const cartProducts = (
     await pool.query(
-      `SELECT p.id, p.name AS product_name, p.image AS product_image, p.offer_price, ci.quantity::int AS quantity, "user".username as seller_name
+      `SELECT p.id, p.name AS product_name, p.image AS product_image, p.offer_price, ci.quantity::int AS quantity
     FROM cart c JOIN jsonb_each_text(c.items) AS ci(product_id, quantity) ON true 
-    JOIN product p ON p.id::text = ci.product_id join "user" on p.sellerid="user".id
+    JOIN product p ON p.id::text = ci.product_id
     WHERE c.userid = $1;`,
       [buyerid]
     )

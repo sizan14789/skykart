@@ -14,7 +14,7 @@ export const validateBuyer = async (req, res, next) => {
   ).rows[0];
 
   if (!buyerid)
-    return next(new ApiError("Unauthorized", 401, "Failed to verify as seller"));
+    return next(new ApiError("Unauthorized", 401, "Failed to verify as a buyer"));
 
   req.buyerid = buyerid.id;
   next();

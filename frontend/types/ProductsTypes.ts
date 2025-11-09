@@ -10,7 +10,6 @@ export interface soloProductType extends ProductCardType {
   description: string,
   category: string,
   brand: string,
-  price: number,
-  seller_name: string,
+  price: number, 
   created_at: string
 }

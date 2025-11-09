@@ -18,7 +18,7 @@ const getProductData = async (id: string) => {
   redirect('/')
 };
 
-export default async function Shop({ params }: { params: { id: string } }) {
+export default async function Product({ params }: { params: { id: string } }) {
   const id: string = (await params)?.id; 
 
   const productData: soloProductType = await getProductData(id);

@@ -13,7 +13,6 @@ export default function SingleProduct({ data }: { data: soloProductType }) {
     price,
     category,
     brand,
-    seller_name,
   } = data;
 
   return (
@@ -41,10 +40,8 @@ export default function SingleProduct({ data }: { data: soloProductType }) {
         </div>
         <p className="dimmed-text">Brand: {brand}</p>
         <p className="dimmed-text mb-4">Category: {category}</p>
-        <button className="self-start cursor-pointer">{seller_name}</button>
 
         <CartAndBuy id={id} />
-
       </div>
     </div>
   );

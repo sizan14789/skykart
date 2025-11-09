@@ -21,8 +21,7 @@ const ItemCard = ({
     id,
     product_name,
     offer_price,
-    product_image,
-    seller_name,
+    product_image, 
     quantity,
   } = data;
 
@@ -99,7 +98,6 @@ const ItemCard = ({
         />
         <div className="flex gap-1 md:gap-2 flex-col  w-full">
           <h2 className=" text-center lg:text-start md:text-xl">{product_name}</h2>
-          <h2 className=" text-center lg:text-start text-xs md:text-sm">{seller_name}</h2>
         </div>
       </Link>
 
