@@ -46,15 +46,15 @@ h2{
 }
 
 .core {
-  @apply max-w-340 mx-auto px-8;
+  @apply max-w-340 mx-auto px-4;
 }
 
 .button-primary {
-  @apply text-sm rounded-md flex bg-(--primary) duration-200 text-white font-medium overflow-hidden hover:brightness-85  active:scale-90 cursor-pointer;
+  @apply text-sm rounded-sm flex bg-(--primary) duration-200 text-white font-medium overflow-hidden hover:brightness-80 active:scale-90 cursor-pointer;
 }
 
 .button-secondary {
-  @apply text-sm rounded-md flex font-medium overflow-hidden duration-200 border border-(--border-button) bg-(--bg) hover:bg-(--primary) hover:text-white hover:border-(--primary) active:scale-90 cursor-pointer;
+  @apply text-sm rounded-sm flex font-medium overflow-hidden duration-200 border border-(--border-button) bg-(--bg) hover:bg-(--primary) hover:text-white hover:border-(--primary) active:scale-90 cursor-pointer;
 }
 
 .button-rounded{
@@ -66,5 +66,5 @@ h2{
 }
 
 .input {
-  @apply border border-(--border) bg-(--bg) text-sm p-3 rounded-md outline-none duration-200 focus:border-(--primary);
+  @apply border border-(--border) bg-(--bg) text-sm p-3 rounded-sm outline-none duration-200 focus:border-(--primary);
 }

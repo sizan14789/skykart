@@ -1,6 +1,7 @@
 import { getSessionid, getUser } from "@/lib/initialLoadLib";
 import CheckoutDisplay from "./CheckoutDisplay";
 import CheckoutForm from "./CheckoutForm";
+import Link from "next/link";
 
 const getCheckoutItemDetails = async (sessionid: string) => {
   try {
@@ -37,10 +38,12 @@ export default async function Cart() {
   return (
     <div className="shell flex grow my-10">
       <div className="core grow flex flex-col">
-        <h2 className="text-2xl mb-4">Checkout</h2>
+        <p className="text-sm text-(--subtext) flex items-center gap-1 mb-4">
+          <Link href="/">Home</Link> / <Link href="/checkout">Checkout</Link>
+        </p>
         <div className=" flex gap-10 lg:gap-20 flex-col-reverse md:flex-row w-full max-w-280 mx-auto">
           <CheckoutForm />
-          <CheckoutDisplay  data={checkoutDetails} />
+          <CheckoutDisplay data={checkoutDetails} />
         </div>
       </div>
     </div>

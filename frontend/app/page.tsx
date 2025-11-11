@@ -1,5 +1,6 @@
 import Slider from "@/ui/components/homepage/Slider"; 
 import ShopComponent from "@/ui/components/homepage/ShopComponent";
+import Smartphones from "@/ui/components/homepage/Smartphones";
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <div className="core flex flex-col items-center">
         <Slider />
         <ShopComponent />
-        <div className="w-full my-10">Categories</div>
+        <Smartphones />
       </div>
     </div>
   );

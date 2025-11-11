@@ -1,13 +1,24 @@
-frontend ---> Add sorting on the shop section by default, price low to high and high to low 
+add a line before categories
+----------------------------------categories------------------------------
+fix the swiper
+
+add 3 categories
+Smartphones
+Laptops
+Accessories
+
+change all page headings to folder structure style 
+e.g. Home / Shop / product_no
 
 update the slider to point to 3 different pages
 1st for top selling item
 2nd for top category
 3rd for own cart
 
-update cart Details if it exists from single product page so that adding and going back with mouse results in updated info
+frontend ---> Add sorting on the shop section by default, price low to high and high to low 
 
 Archived orders page or something like history
 
 // extreme advanced
+add cart as sidebar 
 Merge existing orders based on pending orders

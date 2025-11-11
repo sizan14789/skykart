@@ -12,7 +12,7 @@ export default function NavbarSearchDesktop() {
         type="search"
         placeholder="search"
         name="search"
-        className="outline-none border border-(--border) border-r-0 pl-2 rounded-tl-md rounded-bl-md grow focus:border-(--primary) max-w-116 text-sm text-(--subtext) "
+        className="outline-none border border-(--border) border-r-0 pl-2 rounded-tl-sm rounded-bl-sm grow focus:border-(--primary) max-w-116 text-sm text-(--subtext) "
         required
       />
       <button className="button-primary h-full w-10 flex items-center justify-center rounded-tl-none! rounded-bl-none!">

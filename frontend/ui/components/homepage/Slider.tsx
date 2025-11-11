@@ -41,7 +41,7 @@ const sliderInfo = [
 export default function Slider() {
   return (
     <div className="w-full my-10">
-      <div className="overflow-hidden rounded-xl">
+      <div className="overflow-hidden rounded-md">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={0}
@@ -91,7 +91,7 @@ export default function Slider() {
                         width={400}
                         height={400}
                         alt="slide-1"
-                        className="rounded-2xl object-cover"
+                        className="rounded-md object-cover"
                       />
                     </figure>
                   </div>

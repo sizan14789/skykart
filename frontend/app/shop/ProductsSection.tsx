@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FIlterBox from "./FilterBox";
 import ProductCard from "./ProductCard";
 import { ProductCardType } from "@/types/ProductsTypes";
@@ -11,8 +12,10 @@ export default function ProductsSection({
 }) {
   return (
     <div className="w-full ">
-      <div className="text-2xl my-1 mt-6 flex justify-between">
-        <h2>Shop</h2>
+      <div className="my-1 mt-6 flex justify-between items-center">
+        <p className="text-sm text-(--subtext) flex items-center gap-1">
+          <Link href="/" >Home</Link> / <Link href="/shop" >Shop</Link>
+        </p>
         <FIlterBox search={searchString} />
       </div>
       {searchString ? (
@@ -29,7 +32,7 @@ export default function ProductsSection({
           </p>
         </div>
       ) : (
-        <div className="w-full py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
+        <div className="w-full py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-8">
           {productsArray.map((each: ProductCardType) => {
             return <ProductCard data={each} key={each.id} />;
           })}

@@ -83,7 +83,7 @@ export default function CartContainer({
 
       <div className="py-8 px-2 grid grid-cols-3 lg:grid-cols-5 mb-4 font-semibold ">
         <p className="flex justify-center lg:justify-start">Total</p>
-        <p className="flex justify-center lg:justify-start col-start-3 lg:col-start-5">
+        <p className="flex justify-center lg:justify-start lg:pl-10 col-start-3 lg:col-start-5">
           ${getTotal()}
         </p>
       </div>

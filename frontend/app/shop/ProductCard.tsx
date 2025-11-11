@@ -23,7 +23,7 @@ export default function ProductCard({data}: {data:ProductCardType }) {
   }
 
   return (
-    <div className="flex flex-col border border-(--border) rounded-xl overflow-hidden p-4 pb-6 grow hover:border-(--primary) duration-200 group cursor-pointer"
+    <div className="flex flex-col border border-(--border) rounded-md overflow-hidden p-4 pb-6 grow hover:border-(--primary) duration-200 group cursor-pointer "
     onClick={()=> router.push('/shop/'+id)}
     >
       <figure className="flex justify-center items-center mb-4 rounded-md overflow-hidden">
