@@ -1,15 +1,16 @@
 export interface ProductCardType {
-  id: number,
-  product_name: string,
-  product_image: string,
-  rating: number,
-  offer_price: number
+  id: number;
+  product_name: string;
+  product_image: string;
+  rating: number;
+  offer_price: number;
+  price: number;
+  offer_percentage: number;
 }
 
 export interface soloProductType extends ProductCardType {
-  description: string,
-  category: string,
-  brand: string,
-  price: number, 
-  created_at: string
+  description: string;
+  category: string;
+  brand: string;
+  created_at: string;
 }

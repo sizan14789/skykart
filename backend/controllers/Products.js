@@ -47,7 +47,7 @@ export const getAllProducts = async (req, res) => {
 
   const categoriesExist = category && category.length > 0;
 
-  let sql = `SELECT id, name AS product_name, image AS product_image, rating, offer_price 
+  let sql = `SELECT id, name AS product_name, image AS product_image, rating, offer_price, price, ROUND(((price-offer_price)*100/price)::numeric, 0) as offer_percentage 
   FROM product WHERE 
   name ILIKE $1 AND 
   offer_price BETWEEN $2 AND $3

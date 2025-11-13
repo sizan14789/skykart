@@ -5,6 +5,7 @@
 :root {
   --bg: #ffffff;
   --text: #000000e3;
+  --text-deep: #161616;
   --subtext: #0000007e;
   --primary: #f44336;
   --secondary: #e91e63;
@@ -18,6 +19,7 @@
 .dark {
   --bg: #0a0a0a;
   --text: #ffffffdc;
+  --text-deep: #ececec;
   --subtext: #ffffff80;
   --primary: #673ab7;
   --secondary: #9c27b0;

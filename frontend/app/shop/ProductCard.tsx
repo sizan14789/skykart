@@ -8,7 +8,15 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function ProductCard({ data }: { data: ProductCardType }) {
-  const { id, product_name, product_image, rating, offer_price } = data;
+  const {
+    id,
+    product_name,
+    product_image,
+    rating,
+    offer_price,
+    price,
+    offer_percentage,
+  } = data;
   const { cart, setCart } = useCartStore();
   const router = useRouter();
 
@@ -24,7 +32,7 @@ export default function ProductCard({ data }: { data: ProductCardType }) {
 
   return (
     <div
-      className="flex flex-col border border-(--border) rounded-md p-4 pb-6 grow hover:border-(--primary) duration-200 group cursor-pointer h-full min-h-83.75 justify-end"
+      className="flex flex-col border border-(--border) rounded-md p-4 pb-6 grow hover:border-(--primary) duration-200 group cursor-pointer h-full min-h-83.75 justify-end relative"
       onClick={() => router.push("/shop/" + id)}
     >
       <figure className="flex justify-center items-center mb-auto rounded-md overflow-hidden flex-col">
@@ -44,7 +52,10 @@ export default function ProductCard({ data }: { data: ProductCardType }) {
 
       <div className="flex flex-col mb-2 items-center gap-2">
         <p className="text-(--subtext) text-xs ">Rating: {rating}/5</p>
-        <p className="">${offer_price}</p>
+        <div className="flex gap-1 items-end">
+          <p>${offer_price}</p> 
+          <p className="line-through text-xs">${price}</p>
+        </div>
       </div>
 
       <div className="flex gap-2 ">
@@ -61,6 +72,9 @@ export default function ProductCard({ data }: { data: ProductCardType }) {
           Buy Now
         </button>
       </div>
+      <span className="absolute top-0 left-0 bg-(--text-deep) text-(--bg) h-11 aspect-square flex items-center justify-center text-sm rounded-sm ">
+        -{offer_percentage}%
+      </span>
     </div>
   );
 }
