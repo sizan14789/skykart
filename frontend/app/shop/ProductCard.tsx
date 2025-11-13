@@ -24,10 +24,10 @@ export default function ProductCard({ data }: { data: ProductCardType }) {
 
   return (
     <div
-      className="flex flex-col border border-(--border) rounded-md p-4 pb-6 grow hover:border-(--primary) duration-200 group cursor-pointer "
+      className="flex flex-col border border-(--border) rounded-md p-4 pb-6 grow hover:border-(--primary) duration-200 group cursor-pointer h-full min-h-83.75 justify-end"
       onClick={() => router.push("/shop/" + id)}
     >
-      <figure className="flex justify-center items-center mb-4 rounded-md overflow-hidden">
+      <figure className="flex justify-center items-center mb-auto rounded-md overflow-hidden flex-col">
         <Image
           src={product_image}
           width={300}
@@ -35,15 +35,19 @@ export default function ProductCard({ data }: { data: ProductCardType }) {
           alt={product_name + " " + "image"}
           className="object-cover group-hover:scale-110 duration-200"
         />
+        <h2 className="text-center text-sm mt-4">
+          {product_name.length > 40
+            ? product_name.slice(0, 40) + "..."
+            : product_name}
+        </h2>
       </figure>
 
       <div className="flex flex-col mb-2 items-center gap-2">
-        <h2 className="text-center">{product_name.length > 15 ? product_name.slice(0, 15) : product_name }</h2>
         <p className="text-(--subtext) text-xs ">Rating: {rating}/5</p>
         <p className="">${offer_price}</p>
       </div>
 
-      <div className="flex gap-2 mt-auto">
+      <div className="flex gap-2 ">
         <button
           className="button-secondary h-10 flex-1 justify-center items-center rounded-full!"
           onClick={(e) => handleAddToCartButtonClick(e)}

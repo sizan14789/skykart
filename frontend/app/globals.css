@@ -27,6 +27,17 @@
   --slider: #1a1a1a;
 }
 
+@layer base {
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    @apply appearance-none m-0;
+  }
+  input[type=number] {
+    @apply [appearance:textfield];
+  }
+}
+
+
 /* html{
   font-size: 90%;
 } */

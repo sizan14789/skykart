@@ -2,13 +2,37 @@
 
 import { XIcon } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import FilterBoxForm from "./FilterBoxForm";
 
-export default function FIlterBox({ search }: { search: string }) {
+export default function FIlterBox({ search="" }: { search: string }) {
   const [filterPanel, setFilterPanel] = useState<Boolean>(false);
   const router = useRouter();
 
-  const handleFilter = async () => {};
+  const handleFilter = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    let query = "?search=" + search;
+
+    const formdata = Object.fromEntries(new FormData(e.currentTarget));
+
+    // adding min and max price
+    if (formdata.min_price !== "") query += "&min_price=" + formdata.min_price;
+    if (formdata.max_price !== "") query += "&max_price=" + formdata.max_price;
+
+    // deleting others to filter accessories
+    delete formdata.min_price;
+    delete formdata.max_price;
+
+    // building categories query
+    let categories = "";
+    const categoriesArray = Object.keys(formdata);
+    categoriesArray.forEach((each) => {
+      categories += each + ";";
+    });
+    if (categories !== "") query += "&category=" + categories;
+
+    router.push(`/shop${query}`);
+  };
 
   return (
     <>
@@ -20,7 +44,7 @@ export default function FIlterBox({ search }: { search: string }) {
       </button>
       <div
         className={`z-100 flex fixed top-0 left-full min-h-svh min-w-svw transition duration-300 ease-in-out ${
-          filterPanel ? "-translate-x-full" : ""
+          filterPanel ? "-translate-x-full " : ""
         } `}
       >
         <div
@@ -38,29 +62,8 @@ export default function FIlterBox({ search }: { search: string }) {
               <XIcon size={36} weight="light" />
             </p>
           </button>
-          <form onSubmit={handleFilter} className="h-full flex flex-col overflow-hidden w-full">
-            <label htmlFor="price" className="text-sm mb-2 px-2">Price</label>
-            <div className="flex max-w-20 items-center gap-4 px-2">
-              <input
-                type="number"
-                name="min_price"
-                placeholder="Min"
-                className="input max-w-30"
-              />
-              <p className="text-xs">to</p>
-              <input
-                type="number"
-                name="max_price"
-                placeholder="Max"
-                className="input max-w-30"
-              />
-            </div>
 
-            <button className="w-full rounded-none! mt-auto button-primary h-20 flex justify-center items-center text-xl!">
-              Filter
-            </button>
-            
-          </form>
+          <FilterBoxForm handleFilter={handleFilter} />
         </div>
       </div>
     </>

@@ -42,7 +42,7 @@ export const getAllProducts = async (req, res) => {
   if (category) category = category.split(";");
 
   min_price = Number(min_price) || 0;
-  max_price = (Number(max_price) && Number(max_price) < 10000000) || 10000000;
+  max_price = Number(max_price) || 10000000;
   limit = Number(limit);
 
   const categoriesExist = category && category.length > 0;

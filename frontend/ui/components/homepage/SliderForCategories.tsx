@@ -38,11 +38,11 @@ export default function SliderForCategories({
           disableOnInteraction: false,
         }}
         speed={500}
-        className="px-10"
+        className=" "
       >
         {data.map((each) => {
           return (
-            <SwiperSlide key={each.id} className="max-w-56 min-w-56">
+            <SwiperSlide key={each.id} className="max-w-56 min-w-56  min-h-83.75">
               <ProductCard data={each} />
             </SwiperSlide>
           );

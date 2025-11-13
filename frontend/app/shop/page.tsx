@@ -38,6 +38,7 @@ export default async function Shop({
 }) {
   const queryParams = await searchParams;
   const productsArray = await getShopProducts(queryParams);
+  console.log(productsArray)
 
   let searchString = "";
   if (typeof queryParams.search === "string") searchString = queryParams.search;

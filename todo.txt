@@ -1,6 +1,3 @@
-add products to database.....20 for each category
-
-fix the swiper
 
 update the slider to point to 3 different pages
 1st for top selling item
@@ -12,5 +9,6 @@ frontend ---> Add sorting on the shop section by default, price low to high and 
 Archived orders page or something like history
 
 // extreme advanced
+fix the images of the products
 add cart as sidebar 
 Merge existing orders based on pending orders

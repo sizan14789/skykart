@@ -4,17 +4,17 @@ const categories = [
   {
     id: 1,
     name: "Smartphones",
-    tag: "tech",
+    tag: "smartphone",
   },
   {
     id: 2,
     name: "Laptops",
-    tag: "tech",
+    tag: "laptop",
   },
   {
     id: 3,
     name: "Accessories",
-    tag: "tech",
+    tag: "accessories",
   },
 ];
 
@@ -29,7 +29,7 @@ export default function Categories() {
       {categories.map(({ id, name, tag }) => {
         return <SingleCategory key={id} name={name} tag={tag} />;
       })}
-      <div className="mb-20" ></div>
+      <div className="mb-8" ></div>
     </>
   );
 }
