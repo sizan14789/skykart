@@ -35,6 +35,20 @@ export default function CheckoutDisplay({
     return total.toFixed(2);
   };
 
+  if (checkoutDetails.length === 0) {
+    return (
+      <div className=" flex-1 my-6 flex justify-center pt-20">
+        <h2 className="text-(--subtext) text-sm">
+          Empty Cart. Visit the shop{" "}
+          <Link href="/shop" className="text-(--highlight) ">
+            shop
+          </Link>{" "}
+          to add items
+        </h2>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col flex-1">
       <div className="p-2 flex justify-around mb-4 font-semibold ">

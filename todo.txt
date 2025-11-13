@@ -1,14 +1,8 @@
 
-update the slider to point to 3 different pages
-1st for top selling item
-2nd for top category
-3rd for own cart
 
-frontend ---> Add sorting on the shop section by default, price low to high and high to low 
 
 Archived orders page or something like history
 
 // extreme advanced
-fix the images of the products
-add cart as sidebar 
+fix the images of the products 
 Merge existing orders based on pending orders

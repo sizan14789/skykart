@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "offer": "Best Seller!",
+    "headline": "Nothing Ear (3)",
+    "primaryButton": "Shop Now",
+    "primary_link": "/shop/75",
+    "secondaryButton": "See More",
+    "secondary_link": "/shop?category=accessories",
+    "image": "https://i.ibb.co.com/HpxCbTJg/custom-filename.png"
+  },
+  {
+    "id": 2,
+    "offer": "What We Are Known For",
+    "headline": "Upgrade Your Gaming Setup Today",
+    "primaryButton": "Browse",
+    "primary_link": "/shop?category=laptop",
+    "secondaryButton": "More",
+    "secondary_link": "/shop?category=laptop",
+    "image": "https://i.ibb.co.com/yn59k1CX/best-laptop-brands-20230420-3-medium.webp"
+  },
+  {
+    "id": 3,
+    "offer": "Items in Your Cart Are Waiting",
+    "headline": "Ready to Complete Your Order?",
+    "primaryButton": "Cart",
+    "primary_link": "/cart",
+    "secondaryButton": "Checkout",
+    "secondary_link": "/checkout",
+    "image": "https://i.ibb.co.com/tMZP68fd/048148.png" 
+  }
+]
