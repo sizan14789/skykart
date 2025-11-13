@@ -3,48 +3,52 @@
 import useCartStore from "@/context/CartStore";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import districts from '@/assets/districts.json'
 
 export default function CheckoutForm() {
   const router = useRouter();
-  const { setCart } = useCartStore()
+  const { setCart } = useCartStore();
 
-  const handleCheckoutFormSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleCheckoutFormSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
     const formdata = new FormData(e.currentTarget);
-    
-    const full_name = formdata.get('full_name')
-    const phone = formdata.get('phone')
-    const division = formdata.get('division')
-    const city = formdata.get('city')
-    const upzilla = formdata.get('upzilla')
-    const street = formdata.get('street')
-    const village = formdata.get('village')
-    const message = formdata.get('message')
+
+    const full_name = formdata.get("full_name");
+    const phone = formdata.get("phone"); 
+    const city = formdata.get("city");
+    const upzilla = formdata.get("upzilla");
+    const street = formdata.get("street");
+    const village = formdata.get("village");
+    const message = formdata.get("message");
 
     const body = {
       full_name,
-      phone,
-      division,
+      phone, 
       city,
       upzilla,
       street,
       village,
-      message
-    }
+      message,
+    };
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`, {
-        method: "post",
-        body: JSON.stringify(body),
-        headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: "include"
-      })
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`,
+        {
+          method: "post",
+          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
 
-      if(res.status===201){
-        toast.success("Order placed")
-        setCart({})
+      if (res.status === 201) {
+        toast.success("Order placed");
+        setCart({});
       } else {
         const data = await res.json();
         toast.error(data.message);
@@ -53,7 +57,7 @@ export default function CheckoutForm() {
       console.error(error);
     }
   };
-  
+
   return (
     <div className="flex flex-1 flex-col ">
       <form className="flex flex-col mb-4" onSubmit={handleCheckoutFormSubmit}>
@@ -73,27 +77,23 @@ export default function CheckoutForm() {
           required
         />
         <h2 className="text-xl mb-2">Address</h2>
-        <label htmlFor="division" className="flex flex-col gap-2 mb-6">
-          <p className="text-xs text-(--subtext) font-semibold">Division</p>
-          <select className="appearance-none input max-w-140 flex text-center" name="division" required>
-            <option value="dhaka">Dhaka</option>
-            <option value="maymenshing">Maymenshing</option>
-            <option value="sylhet">Sylhet</option>
-            <option value="rajshahi">Rajshahi</option>
-            <option value="rangpur">Rangpur</option>
-            <option value="chittagong">Chittagong</option>
-            <option value="barishal">Barishal</option>
-            <option value="khulna">Khulna</option>
+
+        <label htmlFor="City" className="flex flex-col gap-2 mb-6">
+          <p className="text-xs text-(--subtext) font-semibold">City</p>
+          <select
+            className="appearance-none input max-w-140 flex text-center"
+            name="city"
+            required
+          >
+            {districts.map(({ id, name, value }) => {
+              return (
+                <option value={value} key={id}>
+                  {name}
+                </option>
+              );
+            })}
           </select>
         </label>
-
-        <input
-          type="text"
-          placeholder="City"
-          className="input max-w-140 mb-6 h-14  "
-          name="city"
-          required
-        />
 
         <input
           type="text"
@@ -124,7 +124,7 @@ export default function CheckoutForm() {
           className="input max-w-140 h-40  mb-8"
           name="message"
         />
-        
+
         <button
           type="submit"
           className="button-primary h-14 w-40 flex justify-center items-center"

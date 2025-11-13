@@ -38,8 +38,7 @@ export const addOrders = async (req, res, next) => {
   const body = req.body;
   const {
     full_name,
-    phone,
-    division,
+    phone, 
     city,
     upzilla,
     street,
@@ -52,8 +51,7 @@ export const addOrders = async (req, res, next) => {
   const buyerInfo = {
     buyer_id: buyerid,
     full_name: full_name,
-    phone: phone,
-    division: division,
+    phone: phone, 
     address: address,
     message: message,
   };
@@ -72,13 +70,12 @@ export const addOrders = async (req, res, next) => {
   for (const key of keysArray) {
     try {
       await pool.query(
-        'insert into "order" (product_id, quantity, buyer_id, full_name, division, address, phone, message) values ($1, $2, $3, $4, $5, $6, $7, $8)',
+        'insert into "order" (product_id, quantity, buyer_id, full_name,  address, phone, message) values ($1, $2, $3, $4, $5, $6, $7)',
         [
           Number(key),
           Number(buyerCart[key]),
           Number(buyerInfo.buyer_id),
-          buyerInfo.full_name,
-          buyerInfo.division,
+          buyerInfo.full_name, 
           buyerInfo.address,
           buyerInfo.phone,
           buyerInfo.message ? buyerInfo.message : "",

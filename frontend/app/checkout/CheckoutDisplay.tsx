@@ -32,7 +32,7 @@ export default function CheckoutDisplay({
     checkoutDetails.forEach((each) => {
       total += each.offer_price * each.quantity;
     });
-    return total;
+    return total.toFixed(2);
   };
 
   return (

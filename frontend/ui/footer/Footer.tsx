@@ -13,7 +13,7 @@ export default function Footer() {
             >
               SkyKart
             </Link>
-            <p className="dimmed-text mb-3">
+            <p className="dimmed-text text-xs! mb-3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. At
               cumque porro voluptates similique, perferendis iste tempora est
               architecto ut excepturi sed enim, minima dolorum impedit rem
@@ -22,7 +22,11 @@ export default function Footer() {
 
             <h2 className="font-semibold text-(--subtext)">Socials</h2>
             <div className="flex">
-              <Link href="https://github.com/sizan14789" target="_blank" className="button-rounded h-11 aspect-square" > 
+              <Link
+                href="https://github.com/sizan14789"
+                target="_blank"
+                className="button-rounded h-11 aspect-square"
+              >
                 <GithubLogoIcon size={26} />
               </Link>
             </div>
@@ -76,9 +80,9 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="w-full text-center text-(--subtext) text-sm border-t  border-t-(--border) items-center py-3">
-        All rights Reserved. &#169;{" "}
-        <span className="text-(--highlight)"> Sizan Molla </span> 2025
+      <div className="w-full text-center text-(--subtext) text-xs border-t  border-t-(--border) items-center py-3">
+        © 2025 Sizan Molla. All
+        rights reserved.
       </div>
     </div>
   );

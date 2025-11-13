@@ -42,7 +42,7 @@ export default function CartContainer({
     cartDetails.forEach((each) => {
       total += each.offer_price * each.quantity;
     });
-    return total;
+    return total.toFixed(2);
   };
 
   if (cartDetails.length === 0) {

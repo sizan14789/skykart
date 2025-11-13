@@ -8,7 +8,7 @@
   --text-deep: #161616;
   --subtext: #0000007e;
   --primary: #f44336;
-  --secondary: #e91e63;
+  --secondary: #673ab7;
   --highlight: #0c2ce2;
   --border: #cfcece80;
   --border-button: #81818180;
@@ -19,9 +19,9 @@
 .dark {
   --bg: #0a0a0a;
   --text: #ffffffdc;
-  --text-deep: #ececec;
+  --text-deep: #d1d1d1;
   --subtext: #ffffff80;
-  --primary: #673ab7;
+  --primary: #e91e63;
   --secondary: #9c27b0;
   --highlight: #0c2ce2;
   --border: #42424280;

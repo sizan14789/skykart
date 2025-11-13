@@ -51,7 +51,7 @@ export default function FilterBoxForm({
       <select
         name="order"
         id="category"
-        className="appearance-none ml-8 text-sm border border-(--border) h-10 w-40 rounded-sm px-4"
+        className="appearance-none ml-8 text-sm border border-(--border) h-10 w-40 rounded-sm px-4 text-(--text) bg-(--bg) "
       >
         <option value="created_at">Default</option>
         <option value="offer_price;asc">Price: Low to high</option>
