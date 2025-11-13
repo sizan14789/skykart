@@ -11,7 +11,6 @@ export default async function SingleCategory({
   tag: string;
 }) {
   const dataPerCategory = await getProductsByCategory(tag);
-  console.log(dataPerCategory);
 
   if (!dataPerCategory)
     return (

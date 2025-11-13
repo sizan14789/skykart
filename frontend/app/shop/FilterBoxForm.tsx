@@ -16,14 +16,14 @@ export default function FilterBoxForm({
           type="number"
           name="min_price"
           placeholder="Min"
-          className="input max-w-30"
+          className="input h-10 max-w-30"
         />
         <p className="text-xs">to</p>
         <input
           type="number"
           name="max_price"
           placeholder="Max"
-          className="input max-w-30"
+          className="input h-10 max-w-30"
         />
       </div>
 
@@ -43,7 +43,21 @@ export default function FilterBoxForm({
           Accessories
         </label>
       </div>
- 
+
+      <label htmlFor="category" className="dimmed-text mb-2 mt-6 px-4 ">
+        Sort by
+      </label>
+
+      <select
+        name="order"
+        id="category"
+        className="appearance-none ml-8 text-sm border border-(--border) h-10 w-40 rounded-sm px-4"
+      >
+        <option value="created_at">Default</option>
+        <option value="offer_price;asc">Price: Low to high</option>
+        <option value="offer_price;desc">Price: High to Low</option>
+      </select>
+
       <button className="w-full rounded-none! mt-auto button-primary h-20 flex justify-center items-center text-xl!">
         Filter
       </button>

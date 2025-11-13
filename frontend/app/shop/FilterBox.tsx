@@ -14,14 +14,26 @@ export default function FIlterBox({ search="" }: { search: string }) {
     let query = "?search=" + search;
 
     const formdata = Object.fromEntries(new FormData(e.currentTarget));
+    const { min_price, max_price, order } = formdata;
 
     // adding min and max price
-    if (formdata.min_price !== "") query += "&min_price=" + formdata.min_price;
-    if (formdata.max_price !== "") query += "&max_price=" + formdata.max_price;
+    if (min_price !== "") query += "&min_price=" + min_price;
+    if (max_price !== "") query += "&max_price=" + max_price;
 
     // deleting others to filter accessories
     delete formdata.min_price;
     delete formdata.max_price;
+
+    // order handling 
+    switch(order){
+      case "offer_price;asc":
+        query+="&order_by=offer_price&order=asc"
+        break;
+      case "offer_price;desc":
+        query+="&order_by=offer_price&order=desc"
+        break;
+    }
+    delete formdata.order;
 
     // building categories query
     let categories = "";
@@ -40,7 +52,7 @@ export default function FIlterBox({ search="" }: { search: string }) {
         className="button-secondary h-12 w-32 flex justify-center items-center"
         onClick={() => setFilterPanel(true)}
       >
-        Filter
+        Filter & Sort
       </button>
       <div
         className={`z-100 flex fixed top-0 left-full min-h-svh min-w-svw transition duration-300 ease-in-out ${
