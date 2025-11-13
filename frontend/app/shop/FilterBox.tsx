@@ -49,7 +49,7 @@ export default function FIlterBox({ search="" }: { search: string }) {
   return (
     <>
       <button
-        className="button-secondary h-12 w-32 flex justify-center items-center"
+        className="button-secondary h-10 w-32 flex justify-center items-center"
         onClick={() => setFilterPanel(true)}
       >
         Filter & Sort
