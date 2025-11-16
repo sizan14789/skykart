@@ -36,7 +36,7 @@ export default function SingleProduct({ data }: { data: soloProductType }) {
         <p className="dimmed-text ">{description}</p>
         <p className="dimmed-text my-2">Rating: {rating}/5</p>
 
-        <div className="flex gap-4 items-center mb-2">
+        <div className="flex gap-2 items-center mb-2">
           <p className="text-2xl">
             <span className="text-(--primary)">$</span>
             {offer_price}

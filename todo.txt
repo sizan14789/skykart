@@ -1,5 +1,4 @@
-------------------------To do--------------------------
-add similar products section under single page
+------------------------To do---------------------------
 start buyer side
 
 ------------------------Chores--------------------------
@@ -7,8 +6,9 @@ Archived orders page
 Wishlist page
 fix the images of the products 
 
-------------------------Advanced--------------------------
+------------------------Advanced------------------------
 Merge existing orders based on pending orders
 
-------------------------Prod--------------------------
+------------------------Prod----------------------------
 remove backend urls from all fetch where cookie is sent 
+implement proxy properly

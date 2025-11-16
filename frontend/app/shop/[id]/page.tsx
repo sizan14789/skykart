@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import SingleProduct from "./SingleProduct";
 import { soloProductType } from "@/types/ProductsTypes";
+import SimilarProduct from "./SimilarProduct";
 
 const getProductData = async (id: string) => {
   try {
@@ -20,14 +21,13 @@ const getProductData = async (id: string) => {
 
 export default async function Product({ params }: { params: { id: string } }) {
   const id: string = (await params)?.id; 
-
   const productData: soloProductType = await getProductData(id);
 
   return (
     <div className="shell mb-20 grow flex mt-20">
       <div className="core grow flex flex-col">
         <SingleProduct data={productData} />
-        <div className="my-10" >To be added....similar products</div>
+        <SimilarProduct data={productData} />
       </div>
     </div>
   );

@@ -54,7 +54,7 @@ export default function ProductCard({ data }: { data: ProductCardType }) {
         <p className="text-(--subtext) text-xs ">Rating: {rating}/5</p>
         <div className="flex gap-1 items-end">
           <p>${offer_price}</p> 
-          <p className="line-through text-xs">${price}</p>
+          <p className="line-through text-xs mb-0.5">${price}</p>
         </div>
       </div>
 
