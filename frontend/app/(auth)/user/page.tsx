@@ -7,6 +7,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import LogoutAndUpdate from "./LogoutAndUpdate";
 
 export default async function User() {
   const user = await getUser();
@@ -45,13 +46,7 @@ export default async function User() {
           </div>
           
           {/* todo add modal here to logout or update info */}
-          <div className="flex gap-4">
-            <button className="button-primary h-12 w-32 flex justify-center items-center">
-            Update Info
-          </button><button className="button-secondary h-12 w-32 flex justify-center items-center">
-            Logout
-          </button>
-          </div>
+          <LogoutAndUpdate />
         </div>
       </div>
     </div>

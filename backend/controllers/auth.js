@@ -128,9 +128,11 @@ export const logout = async (req, res, next) => {
   if (!sessionid) return next(new ApiError("No session", 404));
 
   const sessionUserFetched = await pool.query(
-    `delete from session where sessionid=$1'`,
+    `delete from session where sessionid=$1 returning *`,
     [sessionid]
   );
+
+  console.log(sessionUserFetched)
 
   if (sessionUserFetched.rows.length === 0)
     return next(new ApiError("Unauthorized", 401));
@@ -138,7 +140,7 @@ export const logout = async (req, res, next) => {
   res.cookie("sessionid", sessionid, {
     httpOnly: true,
     sameSite: "lax",
-    maxAge: 1000 * 3600 * 24 * 7,
+    maxAge: 0,
     secure: process.env.ENV==="production"
   });
 
