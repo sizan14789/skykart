@@ -1,11 +1,11 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
 type CartDetailsType = {
-  cartDetails: CartItemType [],
-  setCartDetails: (state: CartItemType []) => void
-}
+  cartDetails: CartItemType[];
+  setCartDetails: (state: CartItemType[]) => void;
+};
 
-export const useCartDetailsStore = create<CartDetailsType>((set)=>({
+export const useCartDetailsStore = create<CartDetailsType>((set) => ({
   cartDetails: [],
-  setCartDetails: (state: CartItemType []) => set({cartDetails: state})
-}))
+  setCartDetails: (state: CartItemType[]) => set({ cartDetails: state }),
+}));

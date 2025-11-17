@@ -9,7 +9,7 @@ export const validateBuyer = async (req, res, next) => {
 
   const buyerid = (
     await pool.query(
-      `select id from "user" join "session" on "user".id=userid where sessionid=$1 and "session".created_at + interval '1day' > now() and 'buyer' = any ("role")`, [sessionid]
+      `select id from "user" join "session" on "user".id=userid where sessionid=$1 and "session".created_at + interval '7day' > now() and 'buyer' = any ("role")`, [sessionid]
     )
   ).rows[0];
 

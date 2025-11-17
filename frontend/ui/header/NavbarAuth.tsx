@@ -6,10 +6,10 @@ export default function NavbarAuth({ user }: { user: userType }) {
   return (
     <div className="flex gap-2 md:gap-4 items-center ">
       {user ? (
-        <button className="flex gap-2 items-center">
+        <Link href="/user" className="flex gap-2 items-center">
           <UserCircleIcon size={22} weight="thin" />
           <p>{user?.username}</p>
-        </button>
+        </Link>
       ) : (
         <>
           <button className="button-primary h-8 w-20 md:h-10 md:w-32">

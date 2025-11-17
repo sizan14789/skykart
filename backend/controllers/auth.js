@@ -107,7 +107,7 @@ export const session = async (req, res, next) => {
   if (!sessionid) return next(new ApiError("No session", 404));
 
   const sessionUserFetched = await pool.query(
-    `select username, email, role from session as s join "user" as u on s.userid=u.id where sessionid=$1 and s.created_at > now() - interval '1 day'`,
+    `select username, email, role from session as s join "user" as u on s.userid=u.id where sessionid=$1 and s.created_at > now() - interval '7 day'`,
     [sessionid]
   );
 
