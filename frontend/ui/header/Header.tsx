@@ -12,7 +12,7 @@ export default async function Header({ theme, user }: { theme: string, user: use
         <div className="flex md:gap-2 items-center lg:mr-8">
           <NavButton />
           <Link href="/" className="font-heading text-xl md:text-2xl lg:text-3xl font-light">
-            SkyKart
+            ShopUp
           </Link>
         </div>
 

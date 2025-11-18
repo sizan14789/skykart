@@ -106,7 +106,7 @@ export default function SignupForm() {
       </button>
 
       <p className="text-xs text-(--subtext) mt-2 ">
-        SkyKart user?{" "}
+        ShopUp user?{" "}
         <Link href="/login" className="text-(--highlight) ">
           Log in{" "}
         </Link>

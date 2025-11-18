@@ -90,7 +90,7 @@ export default function LoginForm() {
       </button>
 
       <p className="text-xs text-(--subtext) ">
-        New to SkyKart?{" "}
+        New to ShopUp?{" "}
         <Link href="/signup" className="text-(--highlight) ">
           {" "}
           Sign up{" "}

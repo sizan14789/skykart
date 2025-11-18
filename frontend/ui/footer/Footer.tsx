@@ -11,7 +11,7 @@ export default function Footer() {
               href="/"
               className="font-heading text-xl md:text-2xl font-semibold "
             >
-              SkyKart
+              ShopUp
             </Link>
             <p className="dimmed-text text-xs! mb-3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. At

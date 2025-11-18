@@ -13,8 +13,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SkyKart",
-  description: "A Marketplace app",
+  title: "ShopUp",
+  description: "An E-commerce app",
 };
 
 export default async function RootLayout({
