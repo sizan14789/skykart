@@ -12,6 +12,7 @@ export default function SingleProduct({ data }: { data: soloProductType }) {
     rating,
     offer_price,
     price,
+    product_stock,
     category,
     brand,
   } = data;
@@ -46,6 +47,7 @@ export default function SingleProduct({ data }: { data: soloProductType }) {
         <p className="dimmed-text">Brand: {brand}</p>
         <p className="dimmed-text mb-4">Category: {category}</p>
 
+        <p className="dimmed-text">Stock: {product_stock}</p>
         <CartAndBuy id={id} />
       </div>
     </div>

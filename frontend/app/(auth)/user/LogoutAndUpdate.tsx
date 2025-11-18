@@ -1,16 +1,22 @@
 "use client";
 
+import useCartStore from "@/context/CartStore";
+import { useUserStore } from "@/context/UserStore";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export default function LogoutAndUpdate() {
   const router = useRouter();
+  const { setCart } = useCartStore()
+  const { setUser } = useUserStore()
 
   const handleLogout = async () => {
     try {
       const res = await fetch(`/api/auth/logout`);
       if (res.status === 200) {
         toast.success("Logged out");
+        setCart({});
+        setUser({})
         router.refresh();
         setTimeout(() => router.push("/"), 100);
       } else {

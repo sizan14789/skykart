@@ -9,7 +9,7 @@ export const getProduct = async (req, res, next) => {
 
   const data = (
     await pool.query(
-      `select p.id, p.name as product_name, p.image as product_image, description, rating, p.price, p.offer_price, p.category, p.brand from product as p where p.id=$1`,
+      `select id, name as product_name, image as product_image, description, rating, price, offer_price, category, stock as product_stock, brand from product as p where id=$1`,
       [id]
     )
   ).rows[0];
@@ -47,7 +47,7 @@ export const getAllProducts = async (req, res) => {
 
   const categoriesExist = category && category.length > 0;
 
-  let sql = `SELECT id, name AS product_name, image AS product_image, rating, offer_price, price, ROUND(((price-offer_price)*100/price)::numeric, 0) as offer_percentage 
+  let sql = `SELECT id, name AS product_name, image AS product_image, rating, offer_price, price, stock as product_stock, ROUND(((price-offer_price)*100/price)::numeric, 0) as offer_percentage 
   FROM product WHERE 
   name ILIKE $1 AND 
   offer_price BETWEEN $2 AND $3

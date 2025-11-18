@@ -5,6 +5,7 @@ export interface ProductCardType {
   rating: number;
   offer_price: number;
   price: number;
+  product_stock: number;
   offer_percentage: number;
 }
 

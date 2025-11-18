@@ -49,6 +49,7 @@ export default function CheckoutForm() {
       if (res.status === 201) {
         toast.success("Order placed");
         setCart({});
+        setTimeout(()=> router.push('/orders'), 100);
       } else {
         const data = await res.json();
         toast.error(data.message);
