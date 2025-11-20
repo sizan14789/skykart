@@ -43,8 +43,8 @@ export default function ProductCard({ data }: { data: ProductCardType }) {
       <figure className="flex justify-center items-center mb-auto rounded-md overflow-hidden flex-col">
         <Image
           src={product_image}
-          width={300}
-          height={300}
+          width={330}
+          height={330}
           alt={product_name + " " + "image"}
           className="object-cover group-hover:scale-110 duration-200  text-[.6rem]"
         />

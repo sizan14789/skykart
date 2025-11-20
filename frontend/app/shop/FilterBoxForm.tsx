@@ -58,7 +58,7 @@ export default function FilterBoxForm({
         <option value="offer_price;desc">Price: High to Low</option>
       </select>
 
-      <button className="w-full rounded-none! mt-auto button-primary h-20 flex justify-center items-center text-xl!">
+      <button className="w-full rounded-none! mt-auto button-primary h-10 flex justify-center items-center md:text-xl! md:h-14">
         Filter
       </button>
     </form>

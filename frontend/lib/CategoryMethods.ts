@@ -3,7 +3,7 @@ export const getProductsByCategory = async (category: string) => {
     const res = await fetch(
       `${process.env.BACKEND_URL}/api/products?category=${category}`,
       {
-        cache: "force-cache",
+        next: { revalidate: 3600 * 24 },
       }
     );
     if (res.status === 200) {

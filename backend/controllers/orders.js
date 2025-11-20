@@ -19,8 +19,7 @@ export const getOrders = async (req, res) => {
 export const getOrderById = async (req, res) => {
   const { buyerid } = req;
   const id = req.params.id;
-
-  // todo complete
+ 
   const order = (
     await pool.query(
       `select o.id, p.id as product_id, o.full_name, o.phone, o.address, o.message, o.created_at, p.image as product_image, p.name as product_name, p.description, quantity, p.offer_price, quantity*offer_price as subtotal, order_status from "order" as o join product as p on o.product_id = p.id where o.id=$1 and buyer_id=$2`,

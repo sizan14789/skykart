@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import FilterBoxForm from "./FilterBoxForm";
 
-export default function FIlterBox({ search="" }: { search: string }) {
+export default function FIlterBox({ search = "" }: { search: string }) {
   const [filterPanel, setFilterPanel] = useState<Boolean>(false);
   const router = useRouter();
 
@@ -24,13 +24,13 @@ export default function FIlterBox({ search="" }: { search: string }) {
     delete formdata.min_price;
     delete formdata.max_price;
 
-    // order handling 
-    switch(order){
+    // order handling
+    switch (order) {
       case "offer_price;asc":
-        query+="&order_by=offer_price&order=asc"
+        query += "&order_by=offer_price&order=asc";
         break;
       case "offer_price;desc":
-        query+="&order_by=offer_price&order=desc"
+        query += "&order_by=offer_price&order=desc";
         break;
     }
     delete formdata.order;
@@ -43,6 +43,7 @@ export default function FIlterBox({ search="" }: { search: string }) {
     });
     if (categories !== "") query += "&category=" + categories;
 
+    setFilterPanel(false);
     router.push(`/shop${query}`);
   };
 
