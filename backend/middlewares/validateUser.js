@@ -5,7 +5,7 @@ export const validateBuyer = async (req, res, next) => {
   const sessionid = req.cookies?.sessionid;
 
   if (!sessionid)
-    return next(new ApiError("Unauthorized", 401, "Failed to verify as buyer"));
+    return next(new ApiError("Unauthorized", 401, "Failed to verify as buyer...no session id"));
 
   const buyerid = (
     await pool.query(

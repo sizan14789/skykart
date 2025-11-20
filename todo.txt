@@ -1,12 +1,9 @@
-------------------------To do---------------------------
-add wishlist 
-nav Highlight based on page
+------------------------To do--------------------------- 
+add wishlist
 
 start buyer side
 
 ------------------------Chores--------------------------
-Archived orders page
-Wishlist page
 fix the images of the products 
 
 ------------------------Advanced------------------------

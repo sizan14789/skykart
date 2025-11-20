@@ -2,12 +2,7 @@
 
 import Link from "next/link";
 import useNavStore from "@/context/Nav";
-import {
-  MoonIcon,
-  ShoppingCartSimpleIcon,
-  SunDimIcon,
-  XIcon,
-} from "@phosphor-icons/react";
+import { MoonIcon, SunDimIcon, XIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { setCookie } from "cookies-next";
 import NavbarSearchMobile from "./NavbarSearchMobile";
@@ -15,10 +10,22 @@ import NavbarAuth from "./NavbarAuth";
 import NavbarSearchDesktop from "./NavbarSearchDesktop";
 import { userType } from "@/types/UserType";
 import CartComponentHeader from "./CartComponentHeader";
+import { usePathname } from "next/navigation";
 
-export default function Navbar({ theme, user }: { theme: string, user: userType }) {
+export default function Navbar({
+  theme,
+  user,
+}: {
+  theme: string;
+  user: userType;
+}) {
   const { navOpen, setNavOpen } = useNavStore();
   const [localTheme, setTheme] = useState<string>(theme);
+  const path = usePathname();
+
+  const isActive = (pathQuery: string) => {
+    return path.startsWith("/" + pathQuery);
+  };
 
   const toggleTheme = () => {
     if (localTheme !== "dark") {
@@ -34,7 +41,6 @@ export default function Navbar({ theme, user }: { theme: string, user: userType 
 
   return (
     <div className="flex gap-4 md:gap-6 grow items-center justify-end">
-      
       <NavbarSearchDesktop />
 
       <CartComponentHeader />
@@ -70,14 +76,18 @@ export default function Navbar({ theme, user }: { theme: string, user: userType 
           <Link
             href="/shop"
             onClick={() => setNavOpen(false)}
-            className="border-b border-b-(--border) w-full min-h-20 flex justify-center items-center duration-200 hover:brightness-90 hover:text-(--primary) active:scale-90 bg-(--bg) hover:font-medium "
+            className={`${
+              isActive("shop") ? "text-(--primary)" : ""
+            } border-b border-b-(--border) w-full min-h-20 flex justify-center items-center duration-200 hover:brightness-90 hover:text-(--primary) active:scale-90 bg-(--bg) hover:font-medium `}
           >
             Shop
           </Link>
           <Link
             href="/orders"
             onClick={() => setNavOpen(false)}
-            className="border-b border-b-(--border) w-full min-h-20 flex justify-center items-center duration-200 hover:brightness-90 hover:text-(--primary) active:scale-90 bg-(--bg) hover:font-medium "
+            className={`${
+              isActive("orders") ? "text-(--primary)" : ""
+            } border-b border-b-(--border) w-full min-h-20 flex justify-center items-center duration-200 hover:brightness-90 hover:text-(--primary) active:scale-90 bg-(--bg) hover:font-medium `}
           >
             My Orders
           </Link>
@@ -92,8 +102,22 @@ export default function Navbar({ theme, user }: { theme: string, user: userType 
 
       {/* desktop */}
       <nav className="hidden lg:flex items-center gap-6 justify-center">
-        <Link className="hover:text-(--primary) duration-200 " href="/shop">Shop</Link>
-        <Link className="hover:text-(--primary) duration-200 " href="/orders">My Orders</Link>
+        <Link
+          className={`${
+            isActive("shop") ? "text-(--primary)" : ""
+          } hover:text-(--primary) duration-200 `}
+          href="/shop"
+        >
+          Shop
+        </Link>
+        <Link
+          className={`${
+            isActive("orders") ? "text-(--primary)" : ""
+          } hover:text-(--primary) duration-200 `}
+          href="/orders"
+        >
+          My Orders
+        </Link>
       </nav>
 
       {/* Authentication  */}
