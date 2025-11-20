@@ -33,7 +33,7 @@ export default function NavbarAuth({ user }: { user: userType }) {
         setCart({});
         setUser({});
         router.refresh();
-        setTimeout(() => router.push("/"), 500);
+        setTimeout(() => router.push("/"), 300);
       } else {
         const data = await res.json();
         toast.error(data.message);

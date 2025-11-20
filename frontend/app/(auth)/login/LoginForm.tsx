@@ -40,7 +40,7 @@ export default function LoginForm() {
         toast.success("Logged in");
         setUser(data);
         router.refresh();
-        setTimeout(() => router.push("/"), 1000);
+        setTimeout(() => router.push("/"), 300);
       } else {
         toast.error(data.message);
       }

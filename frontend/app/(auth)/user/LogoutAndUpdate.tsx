@@ -18,7 +18,7 @@ export default function LogoutAndUpdate() {
         setCart({});
         setUser({})
         router.refresh();
-        setTimeout(() => router.push("/"), 100);
+        setTimeout(() => router.push("/"), 300);
       } else {
         const data = await res.json();
         toast.error(data.message);
