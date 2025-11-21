@@ -46,7 +46,7 @@ router.post("/api/wishlist/:id", validateBuyer, async (req, res, next) => {
       [id],
     ]);
   } else {
-    const existingList = wishlistExists[0].list;
+    const existingList = wishlistExists[0].list.map((each) => Number(each));
     if (existingList.includes(Number(id))) {
       return next(new ApiError("Already in wishlist", 409));
     } else {
@@ -77,7 +77,7 @@ router.delete("/api/wishlist/:id", validateBuyer, async (req, res, next) => {
       new ApiError("Not in wishlist", 404, "Item is not in the users wishlist")
     );
   } else {
-    const existingList = wishlistExists[0].list;
+    const existingList = wishlistExists[0].list.map((each) => Number(each));
     if (!existingList.includes(Number(id))) {
       return next(
         new ApiError(
