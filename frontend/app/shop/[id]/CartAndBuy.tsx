@@ -20,17 +20,34 @@ export default function CartAndBuy({
   const { user } = useUserStore();
   const router = useRouter();
 
-  const addToCart = () => {
+  const addToCart = async () => {
     if (user.username) {
-      handleAddToCart({ amount: stockAddCount, id, cart, setCart });
-      setStockAddCount(1);
+      const res = await handleAddToCart({
+        amount: stockAddCount,
+        id,
+        cart,
+        setCart,
+      });
+      if (res) {
+        setStockAddCount(1);
+        toast.success("Added to cart");
+      }
     } else toast.error("Not Logged in");
   };
 
-  const buyNow = () => {
+  const buyNow = async () => {
     if (user.username) {
-      handleBuyNow({ amount: stockAddCount, id, cart, setCart, router });
-      setStockAddCount(1);
+      const res = await handleBuyNow({
+        amount: stockAddCount,
+        id,
+        cart,
+        setCart,
+        router,
+      });
+      if (res) {
+        setStockAddCount(1);
+        toast.success("Added to cart");
+      }
     } else toast.error("Not Logged in");
   };
 

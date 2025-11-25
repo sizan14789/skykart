@@ -26,8 +26,6 @@ export const handleAddToCart = async (params: ParamsTypeForAddToCart) => {
   const { amount, id, cart, setCart } = params;
   const updatedCart = { ...cart };
 
-  console.log(amount);
-
   if (updatedCart[id.toString()]) updatedCart[id.toString()] += amount || 1;
   else updatedCart[id.toString()] = amount || 1;
 
