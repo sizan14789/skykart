@@ -7,8 +7,8 @@ import toast from "react-hot-toast";
 
 export default function LogoutAndUpdate() {
   const router = useRouter();
-  const { setCart } = useCartStore()
-  const { setUser } = useUserStore()
+  const { setCart } = useCartStore();
+  const { setUser } = useUserStore();
 
   const handleLogout = async () => {
     try {
@@ -16,9 +16,9 @@ export default function LogoutAndUpdate() {
       if (res.status === 200) {
         toast.success("Logged out");
         setCart({});
-        setUser({}) 
-        router.push("/")
-        router.refresh(); 
+        setUser({});
+        router.push("/");
+        router.refresh();
       } else {
         const data = await res.json();
         toast.error(data.message);
@@ -31,9 +31,6 @@ export default function LogoutAndUpdate() {
 
   return (
     <div className="flex gap-4">
-      <button className="button-primary h-12 w-32 flex justify-center items-center">
-        Update Info
-      </button>
       <button
         className="button-secondary h-12 w-32 flex justify-center items-center"
         onClick={handleLogout}

@@ -4,11 +4,11 @@ import {
   ShoppingCartSimpleIcon,
   TruckIcon,
 } from "@phosphor-icons/react/dist/ssr";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import LogoutAndUpdate from "./LogoutAndUpdate";
 import { Metadata } from "next";
+import ImageSection from "./ImageSection";
 
 export const metadata: Metadata = {
   title: "User",
@@ -24,16 +24,8 @@ export default async function User() {
   return (
     <div className="shell mt-6 mb-30 sm:my-50">
       <div className="core flex flex-col sm:flex-row gap-6 sm:gap-16">
-        <figure className="flex justify-center overflow-hidden rounded-2xl flex-1">
-          <Image
-            src="https://i.ibb.co.com/HpxCbTJg/custom-filename.png"
-            alt="user image"
-            width={300}
-            height={300}
-            className="object-cover rounded-2xl text-[.6rem]"
-          />
-        </figure>
-        <div className="flex flex-col items-center flex-1 sm:items-start">
+        <ImageSection />
+        <div className="flex flex-col items-center flex-1 sm:items-start pt-6">
           <h2 className="text-4xl">@{username}</h2>
           <p className="dimmed-text">{email}</p>
           <p className="my-3">
@@ -61,7 +53,6 @@ export default async function User() {
             </Link>
           </div>
 
-          {/* todo add modal here to logout or update info */}
           <LogoutAndUpdate />
         </div>
       </div>
