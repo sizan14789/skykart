@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
+    "browser-image-compression": "^2.0.2",
     "cookies-next": "^6.1.1",
     "date-fns": "^4.1.0",
     "ldrs": "^1.1.9",
-    "next": "16.0.7",
+    "next": "^16.1.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-hot-toast": "^2.6.0",

@@ -2,6 +2,7 @@
 
 import { userType } from "@/types/UserType";
 import { UploadSimpleIcon } from "@phosphor-icons/react/dist/ssr";
+import imageCompression from "browser-image-compression";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
@@ -20,25 +21,37 @@ export default function ImageSection({ user }: { user: userType }) {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", file);
-
+    let compressedFile;
     try {
-      const res = await fetch(`/api/user/changedp`, {
-        method: "post",
-        body: formData,
+      compressedFile = await imageCompression(file, {
+        maxSizeMB: 0.5,
+        useWebWorker: true,
       });
-      console.log(res);
-      if (res.status !== 201) {
-        toast.error("Fetch Failed");
-      } else {
-        toast.success("Image Uploaded");
-        router.refresh();
-      }
     } catch (error) {
-      toast.error("Internal Error");
-      console.log(error);
+      toast.error("Error during compression");
+      return;
     }
+
+    const formData = new FormData();
+    formData.append("file", compressedFile);
+
+    toast.promise(
+      async () => {
+        const res = await fetch(`/api/user/changedp`, {
+          method: "post",
+          body: formData,
+        });
+        return res;
+      },
+      {
+        loading: "Uploading",
+        success: () => {
+          router.refresh();
+          return "Uploaded";
+        },
+        error: "Could not upload",
+      }
+    );
   };
 
   return (
