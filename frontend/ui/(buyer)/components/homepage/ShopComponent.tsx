@@ -1,10 +1,14 @@
-import ProductCard from "@/app/shop/ProductCard";
+import ProductCard from "@/app/(buyer)/shop/ProductCard";
 import { ProductCardType } from "@/types/ProductsTypes";
 import Link from "next/link";
 
 const getProducts = async () => {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/api/products?limit=5`);
+    const res = await fetch(`${process.env.BACKEND_URL}/api/products?limit=5`, {
+      next: {
+        revalidate: 3600 * 24,
+      },
+    });
     const data = await res.json();
     return data;
   } catch (error) {

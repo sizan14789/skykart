@@ -1,7 +1,7 @@
 import { soloProductType } from "@/types/ProductsTypes";
 import Image from "next/image";
 import CartAndBuy from "./CartAndBuy";
-import { FolderStructure } from "@/ui/components/FolderStructure";
+import { FolderStructure } from "@/ui/(buyer)/components/FolderStructure";
 
 export default function SingleProduct({ data }: { data: soloProductType }) {
   const {

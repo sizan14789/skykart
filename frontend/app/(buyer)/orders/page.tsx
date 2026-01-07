@@ -3,7 +3,7 @@ import { getUser } from "@/lib/initialLoadLib";
 import Link from "next/link";
 import OrdersContainer from "./OrdersContainer";
 import { Metadata } from "next";
-import { FolderStructure } from "@/ui/components/FolderStructure";
+import { FolderStructure } from "@/ui/(buyer)/components/FolderStructure";
 
 export const metadata: Metadata = {
   title: "Orders",

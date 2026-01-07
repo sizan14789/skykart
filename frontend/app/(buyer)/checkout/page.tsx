@@ -4,7 +4,7 @@ import CheckoutForm from "./CheckoutForm";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
-import { FolderStructure } from "@/ui/components/FolderStructure";
+import { FolderStructure } from "@/ui/(buyer)/components/FolderStructure";
 
 export const metadata: Metadata = {
   title: "Checkout",

@@ -1,5 +1,5 @@
-import Loading from "@/ui/components/Loading";
+import Loading from "@/ui/(buyer)/components/Loading";
 
-export default function (){
-  return <Loading />
+export default function () {
+  return <Loading />;
 }

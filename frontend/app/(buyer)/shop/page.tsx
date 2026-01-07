@@ -1,4 +1,4 @@
-import Error from "@/ui/components/Error";
+import Error from "@/ui/(buyer)/components/Error";
 import ProductsSection from "./ProductsSection";
 import { Metadata } from "next";
 

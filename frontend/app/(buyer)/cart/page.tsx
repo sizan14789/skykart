@@ -1,18 +1,18 @@
 import { cookies } from "next/headers";
+import CartContainer from "./CartContainer";
 import { getUser } from "@/lib/initialLoadLib";
 import Link from "next/link";
-import ArchivedContainer from "./ArchivedContainer";
 import { Metadata } from "next";
-import { FolderStructure } from "@/ui/components/FolderStructure";
+import { FolderStructure } from "@/ui/(buyer)/components/FolderStructure";
 
 export const metadata: Metadata = {
-  title: "Archive",
-  description: "Archive page of ShopUp",
+  title: "Cart",
+  description: "Cart page of ShopUp",
 };
 
-const getArchivedDetails = async (sessionid: string) => {
+const getCartItemDetails = async (sessionid: string) => {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/api/archived`, {
+    const res = await fetch(`${process.env.BACKEND_URL}/api/cartDetails`, {
       method: "get",
       headers: {
         Cookie: "sessionid=" + sessionid,
@@ -29,26 +29,23 @@ const getArchivedDetails = async (sessionid: string) => {
   }
 };
 
-export default async function Orders() {
+export default async function Cart() {
   const cookieStore = await cookies();
   const sessionid = cookieStore.get("sessionid")?.value;
 
   const user = await getUser();
 
-  let archivedDetails = [];
+  let cartItemDetails = [];
   if (typeof sessionid === "string")
-    archivedDetails = await getArchivedDetails(sessionid);
+    cartItemDetails = await getCartItemDetails(sessionid);
 
   return (
     <div className="shell flex grow my-10">
       <div className="core grow flex flex-col">
-        <FolderStructure
-          list={[{ text: "Archive", url: "archive" }]}
-          margin="mb-4"
-        />
+        <FolderStructure list={[{ text: "Cart", url: "cart" }]} margin="mb-4" />
         <div className="w-full flex flex-col">
           {user ? (
-            <ArchivedContainer archivedDetails={archivedDetails} />
+            <CartContainer cartItemDetailsInfo={cartItemDetails} />
           ) : (
             <div className="grow flex justify-center my-6">
               <h2 className="text-(--subtext) text-sm">

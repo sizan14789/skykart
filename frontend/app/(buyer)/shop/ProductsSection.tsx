@@ -2,7 +2,7 @@ import Link from "next/link";
 import FIlterBox from "./FilterBox";
 import ProductCard from "./ProductCard";
 import { ProductCardType } from "@/types/ProductsTypes";
-import { FolderStructure } from "@/ui/components/FolderStructure";
+import { FolderStructure } from "@/ui/(buyer)/components/FolderStructure";
 
 export default function ProductsSection({
   productsArray,
