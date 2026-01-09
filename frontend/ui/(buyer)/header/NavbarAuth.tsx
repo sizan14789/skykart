@@ -8,6 +8,7 @@ import {
   TruckIcon,
   UserCircleIcon,
 } from "@phosphor-icons/react";
+import { setCookie } from "cookies-next";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -32,8 +33,8 @@ export default function NavbarAuth({ user }: { user: userType }) {
         toast.success("Logged out");
         setCart({});
         setUser({});
-        router.push("/")
-        router.refresh(); 
+        router.push("/");
+        router.refresh();
       } else {
         const data = await res.json();
         toast.error(data.message);
@@ -42,6 +43,11 @@ export default function NavbarAuth({ user }: { user: userType }) {
       console.log(error);
       toast.error("Internal Error");
     }
+  };
+
+  const handleSwitchToSeller = () => {
+    setCookie("mode", "seller");
+    router.push("/storage");
   };
 
   return (
@@ -105,6 +111,16 @@ export default function NavbarAuth({ user }: { user: userType }) {
           >
             <GearIcon size={20} /> Manage Account
           </button>
+          {user && user.role.includes("seller") ? (
+            <button
+              onClick={handleSwitchToSeller}
+              className="cursor-pointer h-12 w-full px-6 border-t border-t-(--border) flex justify-center items-center gap-2 bg-(--bg) hover:brightness-90 duration-200 active:scale-90"
+            >
+              Switch To Seller Mode
+            </button>
+          ) : (
+            <></>
+          )}
           <button
             onClick={handleLogout}
             className="cursor-pointer h-12 w-full px-6 border-t border-t-(--border) flex justify-center items-center gap-2 bg-(--bg) hover:brightness-90 duration-200 active:scale-90"

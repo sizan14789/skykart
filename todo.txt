@@ -1,5 +1,5 @@
 ------------------------To do---------------------------   
-start buyer side
+make the backend for product upload....verify seller, verify data, then only add
 
 ------------------------Chores--------------------------
 fix the images of the products 

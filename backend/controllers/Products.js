@@ -1,5 +1,7 @@
 import ApiError from "../utils/ApiError.js";
 import pool from "../utils/connectPool.js";
+import supabase from "../utils/supabase.js";
+import { randomUUID } from "crypto";
 
 // single product
 export const getProduct = async (req, res, next) => {
@@ -16,7 +18,7 @@ export const getProduct = async (req, res, next) => {
   return res.status(200).json(data);
 };
 
-// all products todo add if in wishlist boolean
+// all products
 export const getAllProducts = async (req, res) => {
   let {
     search = "",
@@ -63,4 +65,72 @@ export const getAllProducts = async (req, res) => {
   const data = (await pool.query(sql, params)).rows;
 
   return res.status(200).json(data);
+};
+
+export const addProduct = async (req, res, next) => {
+  const { files, body } = req;
+
+  if (!files || !files.image)
+    return next(new ApiError("No image found", 400, "/api/addProduct"));
+
+  if (body.price < body.offer_price)
+    return next(
+      new ApiError(
+        "Offer price cant be more than price",
+        400,
+        "/api/addProduct"
+      )
+    );
+
+  const {
+    name,
+    description,
+    rating,
+    offer_price,
+    price,
+    stock,
+    brand,
+    category,
+  } = body;
+
+  // todo upload image
+  const { image } = files;
+  if (!image.mimetype.startsWith("image"))
+    return next(new ApiError("Invalid image format", 400, "/api/addProduct"));
+
+  const filepath = `product_image/${randomUUID()}-${image.name}`;
+
+  const supares = await supabase.storage
+    .from("profile_pics")
+    .upload(filepath, image.data, {
+      contentType: image.mimetype,
+      upsert: true,
+    });
+
+  if (supares.error)
+    return next(
+      new ApiError("Error during image upload", 500, "/api/addProduct")
+    );
+
+  const imageUrl = (
+    await supabase.storage.from("profile_pics").getPublicUrl(filepath)
+  ).data.publicUrl;
+
+  const response = await pool.query(
+    `INSERT INTO product (name, image, description, rating, offer_price, price, stock, brand, category) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+    [
+      name,
+      imageUrl,
+      description,
+      rating,
+      offer_price,
+      price,
+      stock,
+      brand,
+      category,
+    ]
+  );
+  console.log(response);
+
+  return res.status(201).json({ message: "ok" });
 };

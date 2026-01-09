@@ -7,7 +7,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-// todo ImageSection
 export default function ImageSection({ user }: { user: userType }) {
   const router = useRouter();
 

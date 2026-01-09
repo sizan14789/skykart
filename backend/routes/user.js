@@ -4,7 +4,6 @@ import { updateDP } from "../controllers/user.js";
 
 const router = Router();
 
-// todo upload part only
 router.post("/changedp", validateBuyer, updateDP);
 
 export default router;
