@@ -116,6 +116,12 @@ export default function Navbar({ theme }: { theme: string; user: userType }) {
         >
           Storage
         </Link>
+        <button
+          className={`hover:text-(--primary) duration-200 `}
+          onClick={handleSwitchToBuyer}
+        >
+          Switch to Buyer
+        </button>
       </nav>
 
       {/* Authentication  */}
